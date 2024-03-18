@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Menus</title>
+    <style>
+        body {
+    color: rgb(211, 211, 211);
+    font-size: 3vw;
+    background-color: #491137; /*matches and blends with the purple mosque*/
+    background-image: url(images/ramadan_main_bg_v2.webp);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    margin: 0; /* Remove default body margin */
+}
+
+.center { /*to center shit*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.gold-button-container {
+text-align: center; /* Center the buttons */
+}
+
+.gold-button {
+background: linear-gradient(45deg, #ffe554, #e5aa00);
+border: none;
+color: #491137; /* Text color to match the background */
+padding: 10px 20px;
+font-size: 1.5rem;
+cursor: pointer;
+border-radius: 5px;
+margin: 5px;
+}
+
+table { /*the menu table style*/
+    margin: auto;
+    background-color: rgba(169, 169, 169, 0.7); /* Grey background with 70% opacity */
+    border-radius: 10px; /* Optional: Adds rounded corners to the table */
+    overflow: hidden; /* Optional: Ensures the border-radius doesn't affect child elements */
+}
+
+th,
+td {
+    padding: 0.2cm;
+}
+
+.image-full-width {
+    width: 100%;
+}
+
+.image-padding {
+    padding-top: 55%;
+}
+
+footer {
+    background-color: #333; /* Deep grey color */
+    padding: 10px;
+    text-align: center;
+    color: white; /* Text color */
+}
+
+footer h6 {
+    margin: 5px;
+}
+
+.contact-table {
+    margin-top: 3px;
+    width: 30%;
+}
+
+.contact-table td {
+    text-align: center; /* Center content in table cells */
+    padding: 3px; /* Add padding to table cells */
+}
+
+.contact-table a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.contact-table img {
+    width: 60%; /* Set the width of the images to approximately 1.5 inches */
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <img src="images/main-sponsor-template.jpg" alt="image of our main sponsor 'SPONSOR#NAME'" class="center image-full-width">
+        <img src="images/ramadan_mubarak_image_title.png" alt="ramadan mubarak" class="center">
+        <div class="image-padding">
+            <br>
+        </div>
+
+        <div><br></div>
+        <div class="gold-button-container">
+        <a href="index.html"><button class="gold-button">roadha menu</button></a>
+        <a href="tharaavees_retaurants.html"><button class="gold-button">tharaavees menu</button></a>
+        </div>
+        <div><br></div>
+
+        <div><h2 style="text-align: center;">The tharaavees Menus:</h2></div>
+        <table id="TharaaveesMenu">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="manhattan_menu.html"><img src="images/manhattan_fish_market_logo.png" alt="picture of Manhattan Fish Market" class="image-full-width"></a></td>
+                    <td>
+                        <a href="citron_menu.html"><img src="images/citron.png" alt="pic of Citron" class="image-full-width"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="citron_menu.html"><img src="images/citron.png" alt="pic of Citron" class="image-full-width"></a>
+                    </td>
+                    <td>
+                        <a href="manhattan_menu.html"><img src="images/manhattan_fish_market_logo.png" alt="picture of Manhattan Fish Market" class="image-full-width"></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Row 3, Cell 1</td>
+                    <td>Row 3, Cell 2</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div><br></div>
+    <div>
+        <footer>
+            <h6>want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <table class="contact-table">
+                <tr>
+                    <td><a href="https://www.facebook.com" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="logo of facebook"></a></td>
+                    <td><a href="https://www.instagram.com" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="logo of instagram"></a></td>
+                    <td>
+                        <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                            <img src="images/contact_logo/phone_logo.png" alt="pic of a phone" class="image-full-width">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </footer>
+    </div>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609809811";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

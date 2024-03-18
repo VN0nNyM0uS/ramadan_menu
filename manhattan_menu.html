@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu - Ramadan Menus</title>
+
+    <style>
+        body {
+            color: rgb(211, 211, 211);
+            font-size: 3vw;
+            background-color: #491137; /*matches and blends with the purple mosque*/
+            background-image: url(images/restaurant_menu_bg.webp); /* Set the background image */
+            background-size: 100%;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default body margin */
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%; /* Increase width for better visibility */
+        }
+
+        table {
+            margin: auto;
+            background-color: rgba(169, 169, 169, 0.7); /* Grey background with 70% opacity */
+            border-radius: 10px; /* Optional: Adds rounded corners to the table */
+            overflow: hidden; /* Optional: Ensures the border-radius doesn't affect child elements */
+            width: 100%; /* Make the table take full width */
+            margin-top: 20px; /* Add margin for better spacing */
+        }
+
+        th,
+        td {
+            padding: 0.5cm;
+            border: 1px solid #333; /* Add border to cells */
+        }
+
+        .image-full-width {
+            width: 100%;
+        }
+
+        footer {
+            background-color: #333; /* Deep grey color */
+            padding: 10px;
+            text-align: center;
+            color: white; /* Text color */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        footer h6 {
+            margin: 5px;
+        }
+
+        .contact-table {
+            margin-top: 3px;
+            width: 30%; /* Make the table take full width */
+            border: none; /* Remove border from the footer table */
+        }
+
+        .contact-table td {
+            text-align: center; /* Center content in table cells */
+            padding: 3px; /* Add padding to table cells */
+        }
+
+        .contact-table a {
+            display: block;
+            text-decoration: none;
+            color: white;
+        }
+
+        .contact-table img {
+            width: 60%; /* Set the width of the images to approximately 1.5 inches */
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="images/restaurant_menu_banner.jpg" alt="Restaurant Menu Banner" class="center image-full-width">
+        <h2 style="text-align: center;" class="center">Restaurant Menu</h2>
+        <p style="text-align: center;" class="center">Explore our delicious offerings and choose from a variety of mouth-watering dishes.</p>
+    </div>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="4">Suhoor Menu</th>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example row, add more rows as needed -->
+                <tr>
+                    <td>5:00 AM - 6:00 AM</td>
+                    <td>Omelette</td>
+                    <td>Delicious omelette with a variety of fillings</td>
+                    <td>$10.99</td>
+                </tr>
+                <!-- Add more rows with different menu items -->
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <footer id="mainFooter">
+            <h6>want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <table class="contact-table">
+                <tr>
+                    <td><a href="https://www.facebook.com" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="logo of facebook"></a></td>
+                    <td><a href="https://www.instagram.com" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="logo of instagram"></a></td>
+                    <td>
+                        <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                            <img src="images/contact_logo/phone_logo.png" alt="pic of a phone" class="image-full-width">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </footer>
+    </div>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609809811";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+    </script>
+</body>
+
+</html>

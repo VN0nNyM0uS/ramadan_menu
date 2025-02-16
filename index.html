@@ -6,78 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramadan Menus</title>
     <link rel="stylesheet" href="stylesheet.css">
-
-
 </head>
 
 <body>
-    <div>
-        <!-- <img src="images/main-sponsor-template.jpg" alt="image of our main sponsor 'SPONSOR#NAME'" class="center image-full-width"> -->
-        <img src="images/ramadan_mubarak_image_title.png" alt="ramadan mubarak" class="center">
-        <div class="image-padding">
-            <br>
-        </div>
-
-
-        <div><br></div>
+    <header>
+        <img src="images/ramadan_mubarak_image_title.png" alt="Ramadan Mubarak" class="header-image">
+    </header>
+    
+    <div class="container">
         <div class="gold-button-container">
-            <!-- 
-        <a href="index.html"><button class="gold-button">roadha menu</button></a>
-        <a href="tharaavees_retaurants.html"><button class="gold-button">tharaavees menu</button></a>
-            -->
-            <a href="index.html"><button class="gold-button">choose a restaurant</button></a>
+            <a href="index.html" class="gold-button">Roadha Menu</a>
+            <a href="tharaavees_retaurants.html" class="gold-button">Tharaavees Menu</a>
         </div>
-        <div><br></div>
-
-        <div><h2 style="text-align: center;">The roadha Menus:</h2></div>
-        <table id="roadhaMenu">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="manhattan_menu.html"><img src="images/manhattan_fish_market_logo.png" alt="picture of Manhattan Fish Market" class="image-full-width"></a></td>
-                    <td>
-                        <a href="citron_menu.html"><img src="images/citron.png" alt="pic of Citron" class="image-full-width"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="citron_menu.html"><img src="images/citron.png" alt="pic of Citron" class="image-full-width"></a>
-                    </td>
-                    <td>
-                        <a href="manhattan_menu.html"><img src="images/manhattan_fish_market_logo.png" alt="picture of Manhattan Fish Market" class="image-full-width"></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Row 3, Cell 1</td>
-                    <td>Row 3, Cell 2</td>
-                </tr>
-            </tbody>
-        </table>
-
+    
+        <h2 class="section-title">The Roadha Menus:</h2>
+        <div class="menu-grid">
+            <a href="manhattan_menu.html" class="menu-item">
+                <img src="images/manhattan_fish_market_logo.png" alt="Manhattan Fish Market">
+                <span>Manhattan Fish Market</span>
+            </a>
+            <a href="citron_menu.html" class="menu-item">
+                <img src="images/citron.png" alt="Citron">
+                <span>Citron</span>
+            </a>
+            <!-- Add more menu items as needed -->
+        </div>
     </div>
-    <div><br></div>
-    <div>
-        <footer>
-            <h6>want to add your menu?</h6>
+
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
             <h6>Contact us:</h6>
-            <table class="contact-table">
-                <tr>
-                    <td><a href="https://www.facebook.com" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="logo of facebook"></a></td>
-                    <td><a href="https://www.instagram.com" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="logo of instagram"></a></td>
-                    <td>
-                        <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
-                            <img src="images/contact_logo/phone_logo.png" alt="pic of a phone" class="image-full-width">
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </footer>
-    </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         function copyPhoneNumber() {
@@ -91,7 +59,6 @@
                 });
         }
     </script>
-
 </body>
 
 </html>

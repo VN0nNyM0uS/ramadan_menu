@@ -1,27 +1,24 @@
+
 body {
-    color: rgb(211, 211, 211);
-    font-size: 3vw;
-    background-color: #491137; /*matches and blends with the purple mosque*/
-    background-image: url(images/ramadan_main_bg_v2.webp);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    font-family: Arial, sans-serif;
-    margin: 0; /* Remove default body margin */
+color: rgb(211, 211, 211);
+font-size: 3vw;
+background-color: #491137; /*matches and blends with the purple mosque*/
+background-image: url(images/ramadan_main_bg_v2.webp);
+background-size: 100%;
+background-repeat: no-repeat;
+font-family: Arial, sans-serif;
+margin: 0; /* Remove default body margin */
 }
 
 .center { /*to center shit*/
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
 }
 
 .gold-button-container {
 text-align: center; /* Center the buttons */
-}
-
-.hidden {
-    display: none; /* Hide by default */
 }
 
 .gold-button {
@@ -36,53 +33,53 @@ margin: 5px;
 }
 
 table { /*the menu table style*/
-    margin: auto;
-    background-color: rgba(169, 169, 169, 0.7); /* Grey background with 70% opacity */
-    border-radius: 10px; /* Optional: Adds rounded corners to the table */
-    overflow: hidden; /* Optional: Ensures the border-radius doesn't affect child elements */
+margin: auto;
+background-color: rgba(169, 169, 169, 0.7); /* Grey background with 70% opacity */
+border-radius: 10px; /* Optional: Adds rounded corners to the table */
+overflow: hidden; /* Optional: Ensures the border-radius doesn't affect child elements */
 }
 
 th,
 td {
-    padding: 0.2cm;
+padding: 0.2cm;
 }
 
 .image-full-width {
-    width: 100%;
+width: 100%;
 }
 
 .image-padding {
-    padding-top: 55%;
+padding-top: 10%;
 }
 
 footer {
-    background-color: #333; /* Deep grey color */
-    padding: 10px;
-    text-align: center;
-    color: white; /* Text color */
+background-color: #333; /* Deep grey color */
+padding: 10px;
+text-align: center;
+color: white; /* Text color */
 }
 
 footer h6 {
-    margin: 5px;
+margin: 5px;
 }
 
 .contact-table {
-    margin-top: 3px;
-    width: 30%;
+margin-top: 3px;
+width: 30%;
 }
 
 .contact-table td {
-    text-align: center; /* Center content in table cells */
-    padding: 3px; /* Add padding to table cells */
+text-align: center; /* Center content in table cells */
+padding: 3px; /* Add padding to table cells */
 }
 
 .contact-table a {
-    display: block;
-    text-decoration: none;
-    color: white;
+display: block;
+text-decoration: none;
+color: white;
 }
 
 .contact-table img {
-    width: 60%; /* Set the width of the images to approximately 1.5 inches */
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+width: 60%; /* Set the width of the images to approximately 1.5 inches */
+cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }

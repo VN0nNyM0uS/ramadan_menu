@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+    <link rel="stylesheet" href="under_construction_styles.css">
+</head>
+
+<body>
+    <div class="construction-container">
+        <!-- Construction Icon or Image -->
+        <img src="images/under_construction.png" alt="Under Construction" class="construction-image">
+
+        <!-- Main Message -->
+        <h1 class="construction-title">indeed, Allah is with the patient</h1>
+
+        <!-- Subtext -->
+        <p class="construction-text">
+            this page is currently under construction. We'll be up soon with exciting updates. Stay tuned!
+        </p>
+
+        <!-- Optional Countdown Timer -->
+        <div class="countdown-timer">
+            <div class="timer-item">
+                <span id="days">00</span>
+                <span class="timer-label">Days</span>
+            </div>
+            <div class="timer-item">
+                <span id="hours">00</span>
+                <span class="timer-label">Hours</span>
+            </div>
+            <div class="timer-item">
+                <span id="minutes">00</span>
+                <span class="timer-label">Minutes</span>
+            </div>
+            <div class="timer-item">
+                <span id="seconds">00</span>
+                <span class="timer-label">Seconds</span>
+            </div>
+        </div>
+
+        <!-- Back to Home Button -->
+        <a href="index.html" class="home-button">Back to Home</a>
+    </div>
+
+    <!-- Optional JavaScript for Countdown Timer -->
+    <script>
+        // Set the date we're counting down to (e.g., 7 days from now)
+        const countDownDate = new Date().getTime() + (6970 * 24 * 60 * 60 * 1000);
+
+        // Update the countdown every 1 second
+        const countdownTimer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("days").innerText = String(days).padStart(2, "0");
+            document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.querySelector(".countdown-timer").innerHTML = "<p>We're Live!</p>";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

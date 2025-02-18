@@ -41,6 +41,7 @@ header {
     margin: 10px;
     text-decoration: none;
     display: inline-block;
+    text-align: center;
 }
 
 .section-title {
@@ -301,4 +302,33 @@ footer {
     .menu-table td {
         padding: 10px;
     }
+}
+
+/* floating button stuff */
+
+.floating-home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #ffe554, #e5aa00);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.floating-home:hover {
+    transform: scale(1.1);
+}
+
+.floating-home img {
+    width: 25px;
+    height: 25px;
 }

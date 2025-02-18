@@ -1,13 +1,18 @@
 body {
-    color: rgb(211, 211, 211); /* Light gray text for better contrast */
+    color: rgb(211, 211, 211);
     font-size: 16px;
-    background-color: #491137; /* Purple background */
-    background-image: url(images/ramadan_main_bg_v2.webp); /* Background image */
-    background-size: cover; /* Ensure the background covers the entire screen */
-    background-repeat: no-repeat;
+    background-color: #491137;
+    background-image: url(images/ramadan_main_bg_v2.webp);
+    background-size: 30% auto;
+    background-position: top center;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
     font-family: Arial, sans-serif;
     margin: 0;
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -23,6 +28,9 @@ header {
 
 .container {
     padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .gold-button-container {
@@ -88,10 +96,11 @@ header {
 }
 
 footer {
-    background-color: #333;
+    background-color: #2c3e50;
     padding: 20px;
     text-align: center;
     color: white;
+    margin-top: auto;
 }
 
 .footer-content {
@@ -113,6 +122,9 @@ footer {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-size: auto 100vh;
+    }
     .header-image {
         width: 80%; /* Larger relative size for mobile */
         max-width: 300px; /* Limit maximum size for mobile */
@@ -140,6 +152,7 @@ footer {
         padding: 10px 20px; /* Smaller buttons for mobile */
         font-size: 1rem;
     }
+    
 }
 
 

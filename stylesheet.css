@@ -285,7 +285,7 @@ footer {
 }
 
 .social-links img:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
+    transform: scale(2); /* Slight zoom effect on hover */
 }
 
 /* Mobile Responsiveness */
@@ -345,7 +345,7 @@ footer {
     width: 25px;
     height: 25px;
 }
-
+/* end of floating home button */
 
 
 /* silder stuff */

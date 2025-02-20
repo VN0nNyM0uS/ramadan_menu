@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mamak - roadha Menu</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <!-- home button -->
+    <a href="index.html" class="floating-home">
+        <img src="images/house_icon.png" alt="Home">
+    </a>
+
+    <!-- Restaurant Header Image -->
+    <div class="restaurant-header">
+        <img src="images/mamak/mamak_banner.png" alt="citron" class="restaurant-image">
+    </div>
+
+    <div class="container">
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <a href="under_construction.html" target="_blank" class="book-button">Book with Us</a>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="menu-switch">
+            <a href="mamak_menu.html" class="gold-button">Roadha Menu</a>
+            <a href="mamak_tharaavees_menu.html" class="gold-button">Tharaavees Menu</a>
+        </div>
+
+        <!-- Menu Table -->
+        <h2 class="section-title">mamak Tharaavees Menu</h2>
+        <h2 class="section-title">from 20:00 - 22:30</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Food</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Grilled Salmon with Lemon Butter</td>
+                    <td>$18.99</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Fish & Chips Basket</td>
+                    <td>$14.50</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Seafood Paella</td>
+                    <td>$22.75</td>
+                </tr>
+                <!-- Add more menu items as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609809811";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+    </script>
+</body>
+
+</html>

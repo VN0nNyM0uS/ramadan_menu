@@ -345,3 +345,17 @@ footer {
     width: 25px;
     height: 25px;
 }
+
+
+
+/* silder stuff */
+
+div.scroll-container {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scroll-container img {
+    border-radius: 10%;
+    padding: 10px;
+}

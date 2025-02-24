@@ -137,7 +137,7 @@ footer {
 
     .header-container {
         flex-direction: row;
-        gap: 50%;
+        gap: 30%;
     }
     
     .main-logo,

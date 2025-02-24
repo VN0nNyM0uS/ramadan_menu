@@ -15,18 +15,24 @@ body {
     flex-direction: column;
 }
 
-header {
-    text-align: center;
-    padding: 20px 0; /* Add some padding around the header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 2200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-logo {
+    max-width: 150px; /* Adjust this value as needed */
+    height: auto;
+    border-radius: 10%;
 }
 
 .header-image {
-    width: 10%; /* Adjust this value to control the size on desktop */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 600px; /* Limit maximum size for larger screens */
-    display: block;
-    margin-left: auto;
-    margin-right: 5%;
+    max-width: 150px; /* Adjust this value as needed */
+    height: auto;
 }
 
 .container {
@@ -128,9 +134,15 @@ footer {
     body {
         background-size: auto 100vh;
     }
+
+    .header-container {
+        flex-direction: row;
+        gap: 50%;
+    }
+    
+    .main-logo,
     .header-image {
-        width: 10%; /* Larger relative size for mobile */
-        max-width: 300px; /* Limit maximum size for mobile */
+        max-width: 100px; /* Adjust for mobile */
     }
 
     .menu-grid {
@@ -349,7 +361,6 @@ footer {
     height: 25px;
 }
 /* end of floating home button */
-
 
 /* silder stuff */
 

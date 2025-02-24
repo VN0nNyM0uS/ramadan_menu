@@ -15,15 +15,24 @@ body {
     flex-direction: column;
 }
 
-header {
-    text-align: center;
-    padding: 20px 0; /* Add some padding around the header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 2200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-logo {
+    max-width: 150px; /* Adjust this value as needed */
+    height: auto;
+    border-radius: 10%;
 }
 
 .header-image {
-    width: 50%; /* Adjust this value to control the size on desktop */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 600px; /* Limit maximum size for larger screens */
+    max-width: 150px; /* Adjust this value as needed */
+    height: auto;
 }
 
 .container {
@@ -125,9 +134,15 @@ footer {
     body {
         background-size: auto 100vh;
     }
+
+    .header-container {
+        flex-direction: row;
+        gap: 50%;
+    }
+    
+    .main-logo,
     .header-image {
-        width: 80%; /* Larger relative size for mobile */
-        max-width: 300px; /* Limit maximum size for mobile */
+        max-width: 100px; /* Adjust for mobile */
     }
 
     .menu-grid {
@@ -347,7 +362,6 @@ footer {
 }
 /* end of floating home button */
 
-
 /* silder stuff */
 
 div.scroll-container {
@@ -358,4 +372,28 @@ div.scroll-container {
 div.scroll-container img {
     border-radius: 10%;
     padding: 10px;
+}
+
+
+/* Day Selection Dropdown Styling */
+.day-selection {
+    text-align: center;
+    margin: 20px 0;
+}  
+.day-selection label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+#day-select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #491137;
+    color: #d3d3d3;
+    border: 1px solid #d3d3d3;
+}
+
+#day-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(211, 211, 211, 0.5);
 }

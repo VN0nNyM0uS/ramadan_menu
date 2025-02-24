@@ -362,3 +362,27 @@ div.scroll-container img {
     border-radius: 10%;
     padding: 10px;
 }
+
+
+/* Day Selection Dropdown Styling */
+.day-selection {
+    text-align: center;
+    margin: 20px 0;
+}  
+.day-selection label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+#day-select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #491137;
+    color: #d3d3d3;
+    border: 1px solid #d3d3d3;
+}
+
+#day-select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(211, 211, 211, 0.5);
+}

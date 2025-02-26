@@ -70,6 +70,30 @@
     </footer>
 
     <script>
+        // scrolls the pomotion across the screen
+    document.addEventListener("DOMContentLoaded", function () {
+        const scrollContainer = document.querySelector(".scroll-container");
+        let scrollAmount = scrollContainer.scrollWidth - scrollContainer.clientWidth; // Start from the last image
+        const scrollStep = 50; // Pixels to scroll per frame
+        const scrollDelay = 0.000000001; // Milliseconds per frame
+
+        function scrollReverse() {
+            if (scrollAmount <= 0) {
+                return; // Stop scrolling when the first image is reached
+            }
+            scrollAmount -= scrollStep;
+            scrollContainer.scrollLeft = scrollAmount;
+            requestAnimationFrame(scrollReverse);
+        }
+
+        // Initialize the scroll position and start scrolling
+        scrollContainer.scrollLeft = scrollAmount;
+        requestAnimationFrame(scrollReverse);
+    });
+        // end the scroll stuff
+
+
+
         function copyPhoneNumber() {
             const phoneNumber = "+9609333396";
             navigator.clipboard.writeText(phoneNumber)

@@ -76,18 +76,70 @@
     // Menu data for each day categorized into sections
     const menuData = {
         monday: {
-            starters: ["Tomato Soup", "Garlic Bread"],
-            main_dishes: ["Grilled Chicken", "Beef Steak"],
-            salads_sides: ["Caesar Salad", "Mashed Potatoes"],
-            desserts: ["Chocolate Cake", "Ice Cream"],
-            drinks: ["Lemonade", "Iced Tea"]
+            starters: [ "Dates and Nuts", 
+                        "Bajiya", 
+                        "Chicken Sandwich", 
+                        "French Fries"],
+
+            main_dishes: [  "Egg Fried Rice", 
+                            "Pasta with Cream Sauce", 
+                            "Kolhapuri Chicken", 
+                            "Grilled Fish with Sweet Chili Sauce", 
+                            "Grilled Beef with Mushroom Sauce", 
+                            "Grilled Potato", 
+                            "Roshi", 
+                            "Naan", 
+                            "Omlet", 
+                            "Boiled Egg", 
+                            "Mashuni", 
+                            "plain mashuni", 
+                            "maskurolhi", 
+                            "koffi fai mashuni"],
+
+            salads_sides: [ "Caesar Salad with chicken", 
+                            "Kimchi Salad"],
+
+            desserts: [ "Ice cream", 
+                        "chocolate mud cake",
+                        "Assorted Pastry Counter",
+                        "Sliced Fresh Fruit"],
+
+            drinks: [   "Fresh Watermelon Juice", 
+                        "Iced Tea", 
+                        "Mineral Water"]
         },
         tuesday: {
-            starters: ["Pumpkin Soup", "Bruschetta"],
-            main_dishes: ["BBQ Ribs", "Grilled Fish"],
-            salads_sides: ["Greek Salad", "French Fries"],
-            desserts: ["Cheesecake", "Brownie"],
-            drinks: ["Apple Juice", "Coke"]
+            starters: [ "Dates and Nuts", 
+                        "Bajiya", 
+                        "Chicken Sandwich", 
+                        "French Fries"],
+
+            main_dishes: [  "Nasigoreng", 
+                            "Pasta arabiata sause", 
+                            "Chicken Chettinad", 
+                            "Fried fish", 
+                            "Chilly Beef", 
+                            "Fried Potato", 
+                            "Roshi", 
+                            "Naan", 
+                            "Omlet", 
+                            "Boiled Egg", 
+                            "Mashuni", 
+                            "plain mashuni", 
+                            "maskurolhi", 
+                            "hikimas mashuni"],
+
+            salads_sides: [ "fattoush salad", 
+                            "Tabbouleh Salad with Pomegranate"],
+
+            desserts: [ "Ice cream", 
+                        "Bread Butter Pudding",
+                        "Assorted Pastry Counter",
+                        "Sliced Fresh Fruit"],
+
+            drinks: [   "Fresh Watermelon Juice", 
+                        "Iced Tea", 
+                        "Mineral Water"]
         },
         wednesday: {
             starters: ["Miso Soup", "Spring Rolls"],
@@ -127,7 +179,7 @@
         }
 
         menuContainer.innerHTML = `
-            <h4 class="menu-price">Price per person: $XX.XX</h4>
+            <h4 class="menu-price">Price per person: MVR - 175.00++</h4>
             ${generateMenuTable("Starters", menu.starters)}
             ${generateMenuTable("Main Dishes", menu.main_dishes)}
             ${generateMenuTable("Salads & Sides", menu.salads_sides)}

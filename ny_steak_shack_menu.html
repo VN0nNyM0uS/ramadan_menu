@@ -73,88 +73,73 @@
                 });
         }
 
+    // Menu data for each day categorized into sections
+    const menuData = {
+        monday: {
+            starters: ["Tomato Soup", "Garlic Bread"],
+            main_dishes: ["Grilled Chicken", "Beef Steak"],
+            salads_sides: ["Caesar Salad", "Mashed Potatoes"],
+            desserts: ["Chocolate Cake", "Ice Cream"],
+            drinks: ["Lemonade", "Iced Tea"]
+        },
+        tuesday: {
+            starters: ["Pumpkin Soup", "Bruschetta"],
+            main_dishes: ["BBQ Ribs", "Grilled Fish"],
+            salads_sides: ["Greek Salad", "French Fries"],
+            desserts: ["Cheesecake", "Brownie"],
+            drinks: ["Apple Juice", "Coke"]
+        },
+        wednesday: {
+            starters: ["Miso Soup", "Spring Rolls"],
+            main_dishes: ["Teriyaki Chicken", "Sushi Rolls"],
+            salads_sides: ["Coleslaw", "Steamed Vegetables"],
+            desserts: ["Fruit Salad", "Mango Pudding"],
+            drinks: ["Green Tea", "Water"]
+        },
+        // Add the rest of the week...
+    };
 
-               // Menu data for each day
-            const menuData = {
-            monday: [
-                { id: 1, food: "Grilled Salmon with Lemon Butter", price: "$18.99" },
-                { id: 2, food: "Fish & Chips Basket", price: "$14.50" },
-                { id: 3, food: "Seafood Paella", price: "$22.75" }
-            ],
-            tuesday: [
-                { id: 1, food: "Lobster Bisque", price: "$12.99" },
-                { id: 2, food: "Shrimp Scampi", price: "$16.50" },
-                { id: 3, food: "Tuna Steak", price: "$20.75" }
-            ],
-            wednesday: [
-                { id: 1, food: "Clam Chowder", price: "$10.99" },
-                { id: 2, food: "Grilled Mahi-Mahi", price: "$17.50" },
-                { id: 3, food: "Crab Cakes", price: "$19.75" }
-            ],
-            thursday: [
-                { id: 1, food: "Oysters Rockefeller", price: "$15.99" },
-                { id: 2, food: "Blackened Catfish", price: "$16.50" },
-                { id: 3, food: "Seafood Alfredo", price: "$21.75" }
-            ],
-            friday: [
-                { id: 1, food: "Calamari Rings", price: "$11.99" },
-                { id: 2, food: "Fish Tacos", price: "$13.50" },
-                { id: 3, food: "Lobster Roll", price: "$23.75" }
-            ],
-            saturday: [
-                { id: 1, food: "Smoked Salmon Platter", price: "$16.99" },
-                { id: 2, food: "Seafood Boil", price: "$24.50" },
-                { id: 3, food: "Grilled Swordfish", price: "$22.75" }
-            ],
-            sunday: [
-                { id: 1, food: "Shrimp Cocktail", price: "$13.99" },
-                { id: 2, food: "Baked Cod", price: "$18.50" },
-                { id: 3, food: "Seafood Risotto", price: "$20.75" }
-            ]
-        };
+    function generateMenuTable(title, items) {
+        let tableHTML = `
+            <table class="menu-table">
+                <thead>
+                    <tr><th colspan="1">${title}</th></tr>
+                </thead>
+                <tbody>
+        `;
 
-        function generateMenuTable(day) {
-            const menu = menuData[day];
-            let tableHTML = `
-                <table class="menu-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Food</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
+        items.forEach(item => {
+            tableHTML += `<tr><td>${item}</td></tr>`;
+        });
 
-            menu.forEach(item => {
-                tableHTML += `
-                    <tr>
-                        <td>${item.id}</td>
-                        <td>${item.food}</td>
-                        <td>${item.price}</td>
-                    </tr>
-                `;
-            });
+        tableHTML += `</tbody></table>`;
+        return tableHTML;
+    }
 
-            tableHTML += `
-                    </tbody>
-                </table>
-            `;
+    function updateMenu() {
+        const day = document.getElementById('day-select').value;
+        const menuContainer = document.getElementById('menu-container');
+        const menu = menuData[day];
 
-            return tableHTML;
+        if (!menu) {
+            menuContainer.innerHTML = "<p>No menu available for this day.</p>";
+            return;
         }
 
-        function updateMenu() {
-            const day = document.getElementById('day-select').value;
-            const menuContainer = document.getElementById('menu-container');
-            menuContainer.innerHTML = generateMenuTable(day);
-        }
+        menuContainer.innerHTML = `
+            <h4 class="menu-price">Price per person: $XX.XX</h4>
+            ${generateMenuTable("Starters", menu.starters)}
+            ${generateMenuTable("Main Dishes", menu.main_dishes)}
+            ${generateMenuTable("Salads & Sides", menu.salads_sides)}
+            ${generateMenuTable("Desserts", menu.desserts)}
+            ${generateMenuTable("Drinks", menu.drinks)}
+        `;
+    }
 
-        document.getElementById('day-select').addEventListener('change', updateMenu);
+    document.getElementById('day-select').addEventListener('change', updateMenu);
 
-        // Initialize the menu with Monday's data
-        updateMenu();
+    // Initialize the menu with Monday's data
+    updateMenu();
 
 
     </script>

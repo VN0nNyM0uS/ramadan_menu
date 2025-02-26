@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ny steak shack - roadha Menu</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <a href="index.html" class="floating-home">
+        <img src="images/house_icon.png" alt="Home">
+    </a>
+    <!-- Restaurant Header Image -->
+    <div class="restaurant-header">
+        <img src="images/ny_steak_shack/ny_steak_shack_banner.jpg" alt="ny_steak_shack" class="restaurant-image">
+    </div>
+
+    <div class="container">
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <a href="under_construction.html" class="book-button">Book with Us</a>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="menu-switch">
+            <!-- <a href="ny_steak_shack_menu.html" class="gold-button">Roadha Menu</a> -->
+            <!-- <a href="manhattan_menu_tharaavees.html" class="gold-button">Tharaavees Menu</a> -->
+        </div>
+        <h2 class="section-title">Ny steak shack roadha Menu</h2>
+        <!-- Day Selection Dropdown -->
+        <div class="day-selection">
+            <label for="day-select">Select Day:</label>
+            <select id="day-select">
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+            </select>
+        </div>
+        <!-- menu items are in the script in the footer -->
+        <div id="menu-container"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <div class="social-links">
+                <a href="https://web.facebook.com/profile.php?id=61573092196314" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+                <a href="https://www.instagram.com/roadha.online?igsh=MWp5MGFqcjFpdnA3Yg==" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609333396";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+
+
+               // Menu data for each day
+            const menuData = {
+            monday: [
+                { id: 1, food: "Grilled Salmon with Lemon Butter", price: "$18.99" },
+                { id: 2, food: "Fish & Chips Basket", price: "$14.50" },
+                { id: 3, food: "Seafood Paella", price: "$22.75" }
+            ],
+            tuesday: [
+                { id: 1, food: "Lobster Bisque", price: "$12.99" },
+                { id: 2, food: "Shrimp Scampi", price: "$16.50" },
+                { id: 3, food: "Tuna Steak", price: "$20.75" }
+            ],
+            wednesday: [
+                { id: 1, food: "Clam Chowder", price: "$10.99" },
+                { id: 2, food: "Grilled Mahi-Mahi", price: "$17.50" },
+                { id: 3, food: "Crab Cakes", price: "$19.75" }
+            ],
+            thursday: [
+                { id: 1, food: "Oysters Rockefeller", price: "$15.99" },
+                { id: 2, food: "Blackened Catfish", price: "$16.50" },
+                { id: 3, food: "Seafood Alfredo", price: "$21.75" }
+            ],
+            friday: [
+                { id: 1, food: "Calamari Rings", price: "$11.99" },
+                { id: 2, food: "Fish Tacos", price: "$13.50" },
+                { id: 3, food: "Lobster Roll", price: "$23.75" }
+            ],
+            saturday: [
+                { id: 1, food: "Smoked Salmon Platter", price: "$16.99" },
+                { id: 2, food: "Seafood Boil", price: "$24.50" },
+                { id: 3, food: "Grilled Swordfish", price: "$22.75" }
+            ],
+            sunday: [
+                { id: 1, food: "Shrimp Cocktail", price: "$13.99" },
+                { id: 2, food: "Baked Cod", price: "$18.50" },
+                { id: 3, food: "Seafood Risotto", price: "$20.75" }
+            ]
+        };
+
+        function generateMenuTable(day) {
+            const menu = menuData[day];
+            let tableHTML = `
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Food</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            menu.forEach(item => {
+                tableHTML += `
+                    <tr>
+                        <td>${item.id}</td>
+                        <td>${item.food}</td>
+                        <td>${item.price}</td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            return tableHTML;
+        }
+
+        function updateMenu() {
+            const day = document.getElementById('day-select').value;
+            const menuContainer = document.getElementById('menu-container');
+            menuContainer.innerHTML = generateMenuTable(day);
+        }
+
+        document.getElementById('day-select').addEventListener('change', updateMenu);
+
+        // Initialize the menu with Monday's data
+        updateMenu();
+
+
+    </script>
+</body>
+
+</html>

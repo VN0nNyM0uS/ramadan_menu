@@ -24,10 +24,10 @@
         </div>
 
         <!-- Navigation Buttons -->
-        <div class="menu-switch">
+        <!-- <div class="menu-switch">
             <a href="manhattan_menu.html" class="gold-button">Roadha Menu</a>
             <a href="manhattan_menu_tharaavees.html" class="gold-button">Tharaavees Menu</a>
-        </div>
+        </div> -->
         <h2 class="section-title">Manhattan Fish Market roadha Menu</h2>
         <!-- Day Selection Dropdown -->
         <div class="day-selection">
@@ -74,88 +74,340 @@
         }
 
 
-               // Menu data for each day
-            const menuData = {
-            monday: [
-                { id: 1, food: "Grilled Salmon with Lemon Butter", price: "$18.99" },
-                { id: 2, food: "Fish & Chips Basket", price: "$14.50" },
-                { id: 3, food: "Seafood Paella", price: "$22.75" }
+     // Menu data for each day categorized into sections
+     const menuData = {
+        monday: {
+            starters: [ "Dates and Nuts", 
+                        "Bajiya", 
+                        "Chicken Sandwich", 
+                        "French Fries"],
+
+            main_dishes: [  "Egg Fried Rice", 
+                            "Pasta with Cream Sauce", 
+                            "Kolhapuri Chicken", 
+                            "Grilled Fish with Sweet Chili Sauce", 
+                            "Grilled Beef with Mushroom Sauce", 
+                            "Grilled Potato", 
+                            "Roshi", 
+                            "Naan", 
+                            "Omlet", 
+                            "Boiled Egg", 
+                            "Mashuni", 
+                            "plain mashuni", 
+                            "maskurolhi", 
+                            "koffi fai mashuni"],
+
+            salads_sides: [ "Caesar Salad with chicken", 
+                            "Kimchi Salad"],
+
+            desserts: [ "Ice cream", 
+                        "chocolate mud cake",
+                        "Assorted Pastry Counter",
+                        "Sliced Fresh Fruit"],
+
+            drinks: [   "Fresh Watermelon Juice", 
+                        "Iced Tea", 
+                        "Mineral Water"]
+        },
+        tuesday: {
+            starters: [ "Dates and Nuts", 
+                        "Bajiya", 
+                        "Chicken Sandwich", 
+                        "French Fries"],
+
+            main_dishes: [  "Nasigoreng", 
+                            "Pasta arabiata sause", 
+                            "Chicken Chettinad", 
+                            "Fried fish", 
+                            "Chilly Beef", 
+                            "Fried Potato", 
+                            "Roshi", 
+                            "Naan", 
+                            "Omlet", 
+                            "Boiled Egg", 
+                            "Mashuni", 
+                            "plain mashuni", 
+                            "maskurolhi", 
+                            "hikimas mashuni"],
+
+            salads_sides: [ "fattoush salad", 
+                            "Tabbouleh Salad with Pomegranate"],
+
+            desserts: [ "Ice cream", 
+                        "Bread Butter Pudding",
+                        "Assorted Pastry Counter",
+                        "Sliced Fresh Fruit"],
+
+            drinks: [   "Fresh Watermelon Juice", 
+                        "Iced Tea", 
+                        "Mineral Water"]
+        },
+        wednesday: {
+            starters: [ 
+                        "Dates and Nuts", 
+                        "Cutlet", 
+                        "Tuna Sandwich", 
+                        "French Fries"
             ],
-            tuesday: [
-                { id: 1, food: "Lobster Bisque", price: "$12.99" },
-                { id: 2, food: "Shrimp Scampi", price: "$16.50" },
-                { id: 3, food: "Tuna Steak", price: "$20.75" }
+
+            main_dishes: [  
+                        "Garlic Herb Rice", 
+                        "Pasta with Cream Sauce", 
+                        "Tandoori Chicken", 
+                        "Fish Dhonrea", 
+                        "Beef Masala", 
+                        "Fried Potato + Brinjal Moju", 
+                        "Roshi", 
+                        "Naan", 
+                        "Omlet", 
+                        "Boiled Egg", 
+                        "Mashuni", 
+                        "Plain Mashuni", 
+                        "Maskurolhi", 
+                        "Barabo Mashuni"
             ],
-            wednesday: [
-                { id: 1, food: "Clam Chowder", price: "$10.99" },
-                { id: 2, food: "Grilled Mahi-Mahi", price: "$17.50" },
-                { id: 3, food: "Crab Cakes", price: "$19.75" }
+
+            salads_sides: [ 
+                "Aloo Channa Salad", 
+                "Meditation Salad"
             ],
-            thursday: [
-                { id: 1, food: "Oysters Rockefeller", price: "$15.99" },
-                { id: 2, food: "Blackened Catfish", price: "$16.50" },
-                { id: 3, food: "Seafood Alfredo", price: "$21.75" }
+
+            desserts: [ 
+                "Ice Cream", 
+                "Mango Pudding", 
+                "Assorted Pastry Counter", 
+                "Sliced Fresh Fruit"
             ],
-            friday: [
-                { id: 1, food: "Calamari Rings", price: "$11.99" },
-                { id: 2, food: "Fish Tacos", price: "$13.50" },
-                { id: 3, food: "Lobster Roll", price: "$23.75" }
-            ],
-            saturday: [
-                { id: 1, food: "Smoked Salmon Platter", price: "$16.99" },
-                { id: 2, food: "Seafood Boil", price: "$24.50" },
-                { id: 3, food: "Grilled Swordfish", price: "$22.75" }
-            ],
-            sunday: [
-                { id: 1, food: "Shrimp Cocktail", price: "$13.99" },
-                { id: 2, food: "Baked Cod", price: "$18.50" },
-                { id: 3, food: "Seafood Risotto", price: "$20.75" }
+
+            drinks: [   
+                "Fresh Watermelon Juice", 
+                "Ice Tea", 
+                "Mineral Water"
             ]
-        };
+        },
 
-        function generateMenuTable(day) {
-            const menu = menuData[day];
-            let tableHTML = `
-                <table class="menu-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Food</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
+        thursday: {
+            starters: [ 
+                "Dates and Nuts", 
+                "Cutlet", 
+                "Mini Pizza", 
+                "Sausage Roll", 
+                "Gullah"
+            ],
 
-            menu.forEach(item => {
-                tableHTML += `
-                    <tr>
-                        <td>${item.id}</td>
-                        <td>${item.food}</td>
-                        <td>${item.price}</td>
-                    </tr>
-                `;
-            });
+            main_dishes: [  
+                "Szechwan Fried Rice", 
+                "Spaghetti with Dry Tuna Sauce", 
+                "Afghan Chicken", 
+                "Maldivian Tawa Fish", 
+                "Stirred Beef", 
+                "Grilled Vegetables", 
+                "Roshi", 
+                "Naan", 
+                "Omlet", 
+                "Boiled Egg", 
+                "Plain Mashuni", 
+                "Maskurolhi", 
+                "Kokify Mashuni"
+            ],
 
-            tableHTML += `
-                    </tbody>
-                </table>
-            `;
+            salads_sides: [ 
+                "Tabbouleh Salad", 
+                "Hawaiian Chicken Salad"
+            ],
 
-            return tableHTML;
+            desserts: [ 
+                "Ice Cream", 
+                "Phirini", 
+                "Assorted Pastry Counter", 
+                "Sliced Fresh Fruit"
+            ],
+
+            drinks: [   
+                "Fresh Watermelon Juice", 
+                "Ice Tea", 
+                "Mineral Water"
+            ]
+    },
+
+        friday: {
+            starters: [
+                "Dates and Nuts", 
+                "Chicken Sandwich", 
+                "Mini Pizza", 
+                "Sausage Roll", 
+                "French Fries"
+            ],
+
+            main_dishes: [
+                "Chicken Biryani", 
+                "Schezwan Noodles", 
+                "Beef Lasagne", 
+                "Butter Chicken", 
+                "Grilled Fish with Orange Butter Sauce", 
+                "Fried Potato", 
+                "Eggplant Parmesan", 
+                "Roshi", 
+                "Naan", 
+                "Omlet", 
+                "Boiled Egg", 
+                "Plain Mashuni", 
+                "Maskurolhi", 
+                "Kokify Mashuni"
+            ],
+
+            salads_sides: [
+                "Baladi Salad", 
+                "Caesar Salad with Chicken"
+            ],
+
+            desserts: [
+                "Ice Cream", 
+                "Watalappan", 
+                "Assorted Pastry Counter", 
+                "Sliced Fresh Fruit"
+            ],
+
+            drinks: [
+                "Fresh Watermelon Juice", 
+                "Iced Tea", 
+                "Mineral Water"
+            ]
+        },
+
+            saturday: {
+            starters: [
+                "Dates and Nuts", 
+                "Chicken Sandwich", 
+                "Mini Pizza", 
+                "Sausage Roll", 
+                "French Fries"
+            ],
+
+            main_dishes: [
+                "Chicken Mandi", 
+                "Mix Fried Noodles", 
+                "Spaghetti Aglio e Olio", 
+                "Kadhai Chicken", 
+                "Thai Red Curry Fish", 
+                "Fried Potato", 
+                "Steam Veg", 
+                "Roshi", 
+                "Naan", 
+                "Omlet", 
+                "Boiled Egg", 
+                "Plain Mashuni", 
+                "Maskurolhi", 
+                "Kokify Mashuni"
+            ],
+
+            salads_sides: [
+                "Caesar Salad", 
+                "Asian Chicken Salad with Sesame Soya"
+            ],
+
+            desserts: [
+                "Ice Cream", 
+                "Fruit Custard", 
+                "Assorted Pastry Counter", 
+                "Sliced Fresh Fruit"
+            ],
+
+            drinks: [
+                "Fresh Watermelon Juice", 
+                "Iced Tea", 
+                "Mineral Water"
+            ]
+    },
+
+
+            sunday: {
+                starters: [ 
+                    "Dates and Nuts", 
+                    "Bajiya", 
+                    "Tuna Sandwich", 
+                    "Kulhi Bokiba"
+                ],
+
+                main_dishes: [  
+                    "Chicken Fried Rice", 
+                    "Spaghetti Aglio e Olio", 
+                    "Chicken Pepper Masala", 
+                    "Hot Chilly Fish", 
+                    "Fried Chicken", 
+                    "Grilled Potato", 
+                    "Roshi", 
+                    "Naan", 
+                    "Omlet", 
+                    "Boiled Egg", 
+                    "Mashuni", 
+                    "Valho Mashuni", 
+                    "Maskurolhi", 
+                    "Koffi Fai Mashuni"
+                ],
+
+                salads_sides: [ 
+                    "Tabbouleh Salad", 
+                    "Tossed Mixed Salad"
+                ],
+
+                desserts: [ 
+                    "Brownie", 
+                    "Ice Cream", 
+                    "Assorted Pastry", 
+                    "Sliced Fresh Fruit"
+                ],
+
+                drinks: [   
+                    "Fresh Watermelon Juice", 
+                    "Ice Tea", 
+                    "Mineral Water"
+                ]
         }
 
-        function updateMenu() {
-            const day = document.getElementById('day-select').value;
-            const menuContainer = document.getElementById('menu-container');
-            menuContainer.innerHTML = generateMenuTable(day);
+    };
+
+    function generateMenuTable(title, items) {
+        let tableHTML = `
+            <table class="menu-table">
+                <thead>
+                    <tr><th colspan="1">${title}</th></tr>
+                </thead>
+                <tbody>
+        `;
+
+        items.forEach(item => {
+            tableHTML += `<tr><td>${item}</td></tr>`;
+        });
+
+        tableHTML += `</tbody></table>`;
+        return tableHTML;
+    }
+
+    function updateMenu() {
+        const day = document.getElementById('day-select').value;
+        const menuContainer = document.getElementById('menu-container');
+        const menu = menuData[day];
+
+        if (!menu) {
+            menuContainer.innerHTML = "<p>No menu available for this day.</p>";
+            return;
         }
 
-        document.getElementById('day-select').addEventListener('change', updateMenu);
+        menuContainer.innerHTML = `
+            <h4 class="menu-price">Price per person: MVR - 175.00++</h4>
+            ${generateMenuTable("Starters", menu.starters)}
+            ${generateMenuTable("Main Dishes", menu.main_dishes)}
+            ${generateMenuTable("Salads & Sides", menu.salads_sides)}
+            ${generateMenuTable("Desserts", menu.desserts)}
+            ${generateMenuTable("Drinks", menu.drinks)}
+        `;
+    }
 
-        // Initialize the menu with Monday's data
-        updateMenu();
+    document.getElementById('day-select').addEventListener('change', updateMenu);
 
+    // Initialize the menu with Monday's data
+    updateMenu();
 
     </script>
 </body>

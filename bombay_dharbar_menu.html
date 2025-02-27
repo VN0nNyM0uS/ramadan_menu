@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombay Dharbar - Roadha Menu</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <a href="index.html" class="floating-home">
+        <img src="images/house_icon.png" alt="Home">
+    </a>
+
+    <div class="restaurant-header">
+        <img src="images/bombay_dharbar/bombay_dharbar_banner.png" alt="Bombay Dharbar" class="restaurant-image">
+    </div>
+
+    <div class="container">
+        <div class="button-group">
+            <a href="under_construction.html" class="book-button">Book with Us</a>
+        </div>
+
+        <h2 class="section-title">Bombay Dharbar Roadha Menu</h2>
+
+        <!-- Menu Container -->
+        <div id="menu-container"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <div class="social-links">
+                <a href="https://web.facebook.com/profile.php?id=61573092196314" target="_blank">
+                    <img src="images/contact_logo/facebook_logo.webp" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/roadha.online?igsh=MWp5MGFqcjFpdnA3Yg==" target="_blank">
+                    <img src="images/contact_logo/instagram_logo.png" alt="Instagram">
+                </a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609333396";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+
+        // Bombay Dharbar Fixed Menu
+        const bombayDharbarMenu = {
+            starters: ["Dates", "Nuts"],
+            main_dishes: [
+                "Tandoori Chicken", 
+                "Zafrani Chicken Tikka",
+                "Butter Chicken", 
+                "Chicken Biryani with Bone", 
+                "Butter Naan", 
+                "Garlic Naan", 
+                "Raita & Papad"
+            ],
+            desserts: ["Gulab Jamun"],
+            drinks: [
+                "Watermelon Juice (karaa fani)", 
+                "Falooda", 
+                "Mineral Water", 
+                "Tea", 
+                "Coffee"
+            ]
+        };
+
+        function generateMenuTable(title, items) {
+            let tableHTML = `
+                <table class="menu-table">
+                    <thead>
+                        <tr><th colspan="1">${title}</th></tr>
+                    </thead>
+                    <tbody>
+            `;
+            items.forEach(item => {
+                tableHTML += `<tr><td>${item}</td></tr>`;
+            });
+            tableHTML += `</tbody></table>`;
+            return tableHTML;
+        }
+
+        function displayMenu() {
+            const menuContainer = document.getElementById('menu-container');
+
+            menuContainer.innerHTML = `
+                <h4 class="menu-price">Price per person: MVR - 199.00++</h4>
+                ${generateMenuTable("Starters", bombayDharbarMenu.starters)}
+                ${generateMenuTable("Main Dishes", bombayDharbarMenu.main_dishes)}
+                ${generateMenuTable("Desserts", bombayDharbarMenu.desserts)}
+                ${generateMenuTable("Drinks", bombayDharbarMenu.drinks)}
+            `;
+        }
+
+        // Display menu on page load
+        displayMenu();
+    </script>
+</body>
+
+</html>

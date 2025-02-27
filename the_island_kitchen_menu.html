@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the island kitchen - roadha Menu</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <a href="index.html" class="floating-home">
+        <img src="images/house_icon.png" alt="Home">
+    </a>
+    <!-- Restaurant Header Image -->
+    <div class="restaurant-header">
+        <img src="images/the_island_kitchen/the_island_kitchen_banner.jpg" alt="the_island_kitchen" class="restaurant-image">
+    </div>
+
+    <div class="container">
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <a href="under_construction.html" class="book-button">Book with Us</a>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="menu-switch">
+            <!-- <a href="ny_steak_shack_menu.html" class="gold-button">Roadha Menu</a> -->
+            <!-- <a href="manhattan_menu_tharaavees.html" class="gold-button">Tharaavees Menu</a> -->
+        </div>
+        <h2 class="section-title">the island kitchen roadha Menu</h2>
+        <!-- Day Selection Dropdown -->
+        <div class="day-selection">
+            <label for="day-select">Select Day:</label>
+            <select id="day-select">
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+            </select>
+        </div>
+        <!-- menu items are in the script in the footer -->
+        <div id="menu-container"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <div class="social-links">
+                <a href="https://web.facebook.com/profile.php?id=61573092196314" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+                <a href="https://www.instagram.com/roadha.online?igsh=MWp5MGFqcjFpdnA3Yg==" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609333396";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+
+    // Menu data for each day categorized into sections
+    const menuData = {
+        monday: {
+                starters: [
+                    "Mustard yoghurt flavor chicken with vegetables & croutons",
+                    "Crunchy vegetables fata cheese & homemade vinaigrette",
+                    "Grilled tuna eggs & creamy beans"
+                ],
+
+                main_dishes: [
+                    "Sticky garlic rice",
+                    "Chili garlic spaghetti with parmesan cheese",
+                    "Cheesy baked mash potato",
+                    "Pepper mixed Mongolian noodles",
+                    "Oyster beef",
+                    "Devilled chicken",
+                    "Hot buttered cuttlefish",
+                    "Cottage pie",
+                    "Butter vegetable"
+                ],
+
+                soups_and_bread: [
+                    "Creamy chicken soup",
+                    "Bread corner"
+                ],
+
+                desserts: [
+                    "Fresh fruit",
+                    "Date cake"
+                ],
+
+                drinks: [
+                    "Lemon juice",
+                    "Iced Coffee"
+                ]
+        },
+        tuesday: {
+        starters: [
+            "Thai chicken patty with raw papaya salad",
+            "Peanut noodles salad with papaya salad"
+        ],
+        main_dishes: [
+            "Beef Rendang",
+            "Pad Thai noodles",
+            "Red curry kotthu rotti",
+            "Thai basil fried rice",
+            "Pandan rice",
+            "Green curry chicken",
+            "Spicy Thai fish curry",
+            "Chili chicken cutlets"
+        ],
+        soups_and_bread: [
+            "Tom Yum seafood Soup",
+            "Bread corner"
+        ],
+        desserts: [
+            "Fresh fruit",
+            "Date cake",
+            "Lemongrass CREME BRULEE",
+            "Chocolate biscuit pudding"
+        ],
+        drinks: [
+            "Watermelon juice",
+            "Falooda"
+        ]
+        },
+        wednesday: {
+                starters: [
+                    "Grilled vegetables salad and pesto sauce",
+                    "Egg and pasta salad with avocado muse",
+                    "Prawn cocktail crunchy ice berg with strawberries"
+                ],
+                main_dishes: [
+                    "Chicken biriyani",
+                    "Garlic naan",
+                    "Spicy Tandoori kotthu rotti",
+                    "Spicy masala noodles",
+                    "Beef tikka",
+                    "Butter chicken",
+                    "Tomato fish curry",
+                    "Veg Pakora",
+                    "Chana dhal curry"
+                ],
+                soups_and_bread: [
+                    "Chicken lentil soups",
+                    "Bread corner"
+                ],
+                desserts: [
+                    "Fresh fruit",
+                    "Date cake",
+                    "Chocolate cup cake",
+                    "Watalappam",
+                    "Falooda tres leches"
+                ],
+                drinks: [
+                    "Falooda",
+                    "Avocado smoothie"
+                ]
+        },
+        thursday: {
+                starters: [
+                    "Mix greens and caramelized onion salad",
+                    "Chicken peri peri salad",
+                    "Seafood kebab with chili coriander sauce"
+                ],
+                main_dishes: [
+                    "Yellow rice with tempered onion",
+                    "Jafna prawns curry, String hoppers & Disc",
+                    "Spicy chicken kottu",
+                    "Fish cutlet",
+                    "Chicken stew",
+                    "Eggplant moju",
+                    "Beef curry",
+                    "Dhal tempered",
+                    "Coconut sambal & Onion sambal",
+                    "Fried Eggs"
+                ],
+                soups_and_bread: [
+                    "Beef suji",
+                    "Bread corner"
+                ],
+                desserts: [
+                    "Fresh fruit",
+                    "Date cake",
+                    "Watalappam",
+                    "Custard jello",
+                    "Sago pudding"
+                ],
+                drinks: [
+                    "Ice Milo",
+                    "Pineapple juice"
+                ]
+        },
+        friday: {
+                starters: [
+                    "Baked potato & egg salad with mustard yoghurt sauce",
+                    "Garden vegetables & smoked salmon salad",
+                    "Grilled baby octopus mascarpone sauce & vegetables"
+                ],
+                main_dishes: [
+                    "ISLAND KITCHEN special mix seafood rice",
+                    "Stir fried spicygarlic noodles",
+                    "Creamy saffron risotto",
+                    "Herb butter mixed baked potato",
+                    "Oven baked chicken with honey mastered sauce",
+                    "Slow cooked beef with chili coriander sauce",
+                    "Jafna crab curry",
+                    "Grilled sausage with bbq sauce"
+                ],
+                soups_and_bread: [
+                    "Spicy beef broth & cheese bread",
+                    "Bread corner"
+                ],
+                desserts: [
+                    "Fresh fruit",
+                    "Date cake",
+                    "Custard fruit tart",
+                    "Blueberry panna cotta",
+                    "Chocolate mouse"
+                ],
+                drinks: [
+                    "Falooda",
+                    "Fresh mango juice"
+                ]
+        },
+
+        saturday: {
+            starters: [
+                "Seafood, chicken & beef slider",
+                "Grilled squid with chili garlic sauce with mixed vegetables",
+                "Fruit & vegetables salad with porched egg & vinaigrette"
+            ],
+            main_dishes: [
+                "Chicken lasagna with cheese dressing",
+                "Saffron risotto",
+                "Seafood string hoppers olan)",
+                "Ginger beet rice",
+                "Baked chicken with lemon butter sauce",
+                "Grilled seafood and meat with chili lemon sauce",
+                "Slow cooked mutton curry",
+                "Boiled vegetables",
+                "Fried honey glazed mushrooms"
+            ],
+            soups_and_bread: [
+                "Seafood chowder soup with turmeric bread",
+                "Bread corner"
+            ],
+            desserts: [
+                "Fresh fruit",
+                "Date cake",
+                "Blueberry cheese cake",
+                "Chocolate mouse",
+                "creme brulée"
+            ],
+            drinks: [
+                "Brownie cake shake",
+                "Blueberry smoothie"
+            ]
+    },
+        sunday: {
+                starters: [
+                    "Slow coked octopus with rocca salad",
+                    "Spicy lemongrass beef salad"
+                ],
+                main_dishes: [
+                    "Mixed seafood & chicken chopsuey",
+                    "Chili chicken",
+                    "Chinese beef and broccoli",
+                    "Chicken Spoariears pa devilled",
+                    "Chicken mixed egg rice",
+                    "Bami goring",
+                    "Spicy seafood dumplings",
+                    "Red curry kotthu rotti"
+                ],
+                soups_and_bread: [
+                    "Creamy spinach soup with fried calamari",
+                    "Bread corner"
+                ],
+                desserts: [
+                    "Non-bake banoffee pie",
+                    "Date cake",
+                    "Caramel pudding",
+                    "Fresh fruit"
+                ],
+                drinks: [
+                    "Fresh mango juice",
+                    "Fresh Water melon juice"
+                ]
+        }
+
+    };
+
+    function generateMenuTable(title, items) {
+        let tableHTML = `
+            <table class="menu-table">
+                <thead>
+                    <tr><th colspan="1">${title}</th></tr>
+                </thead>
+                <tbody>
+        `;
+
+        items.forEach(item => {
+            tableHTML += `<tr><td>${item}</td></tr>`;
+        });
+
+        tableHTML += `</tbody></table>`;
+        return tableHTML;
+    }
+
+    function updateMenu() {
+        const day = document.getElementById('day-select').value;
+        const menuContainer = document.getElementById('menu-container');
+        const menu = menuData[day];
+
+        if (!menu) {
+            menuContainer.innerHTML = "<p>No menu available for this day.</p>";
+            return;
+        }
+
+        menuContainer.innerHTML = `
+            <h4 class="menu-price">Price per person: MVR - 299.00</h4>
+            ${generateMenuTable("Starters", menu.starters)}
+            ${generateMenuTable("Main Dishes", menu.main_dishes)}
+            ${generateMenuTable("soups and bread", menu.soups_and_bread)}
+            ${generateMenuTable("Desserts", menu.desserts)}
+            ${generateMenuTable("Drinks", menu.drinks)}
+        `;
+    }
+
+    document.getElementById('day-select').addEventListener('change', updateMenu);
+
+    // Initialize the menu with Monday's data
+    updateMenu();
+
+
+    </script>
+</body>
+
+</html>

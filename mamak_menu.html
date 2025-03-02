@@ -117,7 +117,7 @@
                     let day = row[0]?.toLowerCase().trim(); // Column A (Day)
                     let category = row[1]?.toLowerCase().trim(); // Column B (Category)
                     let foodItem = row[2]?.trim(); // Column C (Food Item)
-                    let price = row[3]?.trim(); // Column D (Price per pax)
+                    let price = row[3] ? String(row[3]).trim() : "N/A"; // Convert number to string, handle empty values
 
                     if (day) {
                         if (!restaurantMenu[day]) {

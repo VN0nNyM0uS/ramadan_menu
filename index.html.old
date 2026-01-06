@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="google-site-verification" content="b27NoJLRygljrILz24w895198asoR3lqXXM_oz9zHBc" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Menus</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <header>
+        <meta name="google-site-verification" content="b27NoJLRygljrILz24w895198asoR3lqXXM_oz9zHBc" />
+        <div class="header-container">
+            <img src="images/roadha_online_main_logo_v2.png" alt="main logo of roadha online" class="main-logo">
+            <img src="images/ramadan_mubarak_image_title v2.webp" alt="Ramadan Mubarak" class="header-image">
+        </div>
+
+        <!-- Slideshow container -->
+        <div class="scroll-container">
+            <a href="under_construction.html">
+                <img src="images/slideshow_images/book a Iftar and get a chance to win e.png" alt="promotion" width="360" height="300">
+            </a>
+            <a href="under_construction.html">
+                <img src="images/slideshow_images/slideshow_placeholder1.png" alt="image 1" width="500" height="300">
+            </a>
+            <a href="under_construction.html">
+                <img src="images/slideshow_images/slideshow_placeholder2.png" alt="image 1" width="500" height="300">
+            </a>
+            <a href="under_construction.html">
+                <img src="images/slideshow_images/slideshow_placeholder3.png" alt="image 1" width="500" height="300">
+            </a>
+        </div>
+    </header>
+    <div>
+        <h2 class="section-title">Our Restaurants</h2>
+        <div class="menu-grid">
+            <a href="ny_steak_shack_menu.html" class="menu-item">
+                <img src="images/ny_steak_shack/ny_steak_shack_logo.jpg" alt="NY steak shack">
+                <span>NY steak shack</span>
+            </a>
+            <a href="manhattan_menu.html" class="menu-item">
+                <img src="images/manhattan/manhattan_fish_market_logo.png" alt="Manhattan Fish Market">
+                <span>Manhattan Fish Market</span>
+            </a>
+            <a href="bombay_dharbar_menu.html" class="menu-item">
+                <img src="images/bombay_dharbar/bombay_dharbar_logo.png" alt="bombay dharbar">
+                <span>bombay dharbar</span>
+            </a>
+            <a href="the_island_kitchen_menu.html" class="menu-item">
+                <img src="images/the_island_kitchen/the_island_kitchen_logo.jpg" alt="the island kitchen">
+                <span>the island kitchen</span>
+            </a>
+            <a href="citron_menu.html" class="menu-item">
+                <img src="images/citron/citron_logo.png" alt="citron">
+                <span>citron</span>
+            </a>
+            <a href="mamak_menu.html" class="menu-item">
+                <img src="images/mamak/mamak_logo.png" alt="mamak">
+                <span>mamak</span>
+            </a>
+            <!-- Add more menu items as needed -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <div class="social-links">
+                <a href="https://web.facebook.com/profile.php?id=61573092196314" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+                <a href="https://www.instagram.com/roadha.online?igsh=MWp5MGFqcjFpdnA3Yg==" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // scrolls the pomotion across the screen
+    document.addEventListener("DOMContentLoaded", function () {
+        const scrollContainer = document.querySelector(".scroll-container");
+        let scrollAmount = scrollContainer.scrollWidth - scrollContainer.clientWidth; // Start from the last image
+        const scrollStep = 40; // Pixels to scroll per frame
+        const scrollDelay = 0.000000001; // Milliseconds per frame
+
+        function scrollReverse() {
+            if (scrollAmount <= 0) {
+                return; // Stop scrolling when the first image is reached
+            }
+            scrollAmount -= scrollStep;
+            scrollContainer.scrollLeft = scrollAmount;
+            requestAnimationFrame(scrollReverse);
+        }
+
+        // Initialize the scroll position and start scrolling
+        scrollContainer.scrollLeft = scrollAmount;
+        requestAnimationFrame(scrollReverse);
+    });
+        // end the scroll stuff
+
+
+
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609333396";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+    </script>
+</body>
+
+</html>

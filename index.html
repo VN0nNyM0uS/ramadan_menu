@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta name="google-site-verification" content="b27NoJLRygljrILz24w895198asoR3lqXXM_oz9zHBc" />
+    <meta name="google-site-verification" content="b27NoJLRygljrILz24w895198asoR3lqXXM_oz9zHBc"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramadan Menus</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 </head>
 
 <body>
@@ -15,52 +16,30 @@
         <div class="header-container">
             <img src="images/roadha_online_main_logo_v2.png" alt="main logo of roadha online" class="main-logo">
             <img src="images/ramadan_mubarak_image_title v2.webp" alt="Ramadan Mubarak" class="header-image">
+            <h1 style="display: none;">roadha online</h1>
+            <h1 style="display: none;">iftar menus in maldives</h1>
+            <h1 style="display: none;">ramadan menus</h1>
+            <h1 style="display: none;">roadha promotion</h1>
+            <h1 style="display: none;">roadha mas 2025</h1>
+            <h1 style="display: none;">IFTAR MENU</h1>
+            <h1 style="display: none;">IFTAR TABLE</h1>
+            <h1 style="display: none;">MALDIVES</h1>
+            <h1 style="display: none;">roadha</h1>
+            <h1 style="display: none;">Restaurants</h1>
         </div>
 
         <!-- Slideshow container -->
         <div class="scroll-container">
-            <a href="under_construction.html">
+            <a href="https://forms.gle/Gv9ZDSDyN7YorPnAA">
                 <img src="images/slideshow_images/book a Iftar and get a chance to win e.png" alt="promotion" width="360" height="300">
-            </a>
-            <a href="under_construction.html">
-                <img src="images/slideshow_images/slideshow_placeholder1.png" alt="image 1" width="500" height="300">
-            </a>
-            <a href="under_construction.html">
-                <img src="images/slideshow_images/slideshow_placeholder2.png" alt="image 1" width="500" height="300">
-            </a>
-            <a href="under_construction.html">
-                <img src="images/slideshow_images/slideshow_placeholder3.png" alt="image 1" width="500" height="300">
             </a>
         </div>
     </header>
+    
     <div>
         <h2 class="section-title">Our Restaurants</h2>
-        <div class="menu-grid">
-            <a href="ny_steak_shack_menu.html" class="menu-item">
-                <img src="images/ny_steak_shack/ny_steak_shack_logo.jpg" alt="NY steak shack">
-                <span>NY steak shack</span>
-            </a>
-            <a href="manhattan_menu.html" class="menu-item">
-                <img src="images/manhattan/manhattan_fish_market_logo.png" alt="Manhattan Fish Market">
-                <span>Manhattan Fish Market</span>
-            </a>
-            <a href="bombay_dharbar_menu.html" class="menu-item">
-                <img src="images/bombay_dharbar/bombay_dharbar_logo.png" alt="bombay dharbar">
-                <span>bombay dharbar</span>
-            </a>
-            <a href="the_island_kitchen_menu.html" class="menu-item">
-                <img src="images/the_island_kitchen/the_island_kitchen_logo.jpg" alt="the island kitchen">
-                <span>the island kitchen</span>
-            </a>
-            <a href="citron_menu.html" class="menu-item">
-                <img src="images/citron/citron_logo.png" alt="citron">
-                <span>citron</span>
-            </a>
-            <a href="mamak_menu.html" class="menu-item">
-                <img src="images/mamak/mamak_logo.png" alt="mamak">
-                <span>mamak</span>
-            </a>
-            <!-- Add more menu items as needed -->
+        <div id="restaurant-grid" class="menu-grid">
+            <!-- Dynamic content will be inserted here -->
         </div>
     </div>
 
@@ -79,29 +58,28 @@
     </footer>
 
     <script>
-        // scrolls the pomotion across the screen
-    document.addEventListener("DOMContentLoaded", function () {
-        const scrollContainer = document.querySelector(".scroll-container");
-        let scrollAmount = scrollContainer.scrollWidth - scrollContainer.clientWidth; // Start from the last image
-        const scrollStep = 40; // Pixels to scroll per frame
-        const scrollDelay = 0.000000001; // Milliseconds per frame
+        // scrolls the promotion across the screen
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollContainer = document.querySelector(".scroll-container");
+            let scrollAmount = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            const scrollStep = 40;
+            const scrollDelay = 0.000000001;
 
-        function scrollReverse() {
-            if (scrollAmount <= 0) {
-                return; // Stop scrolling when the first image is reached
+            function scrollReverse() {
+                if (scrollAmount <= 0) {
+                    return;
+                }
+                scrollAmount -= scrollStep;
+                scrollContainer.scrollLeft = scrollAmount;
+                requestAnimationFrame(scrollReverse);
             }
-            scrollAmount -= scrollStep;
+
             scrollContainer.scrollLeft = scrollAmount;
             requestAnimationFrame(scrollReverse);
-        }
-
-        // Initialize the scroll position and start scrolling
-        scrollContainer.scrollLeft = scrollAmount;
-        requestAnimationFrame(scrollReverse);
-    });
-        // end the scroll stuff
-
-
+            
+            // Load restaurant data from Excel
+            loadRestaurantData();
+        });
 
         function copyPhoneNumber() {
             const phoneNumber = "+9609333396";
@@ -113,7 +91,57 @@
                     console.error('Failed to copy phone number: ', err);
                 });
         }
+
+        function loadRestaurantData() {
+            const excelFilePath = "restaurant_data.xlsx";
+            
+            fetch(excelFilePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${excelFilePath}`);
+                    }
+                    return response.blob();
+                })
+                .then(blob => blob.arrayBuffer())
+                .then(buffer => {
+                    const workbook = XLSX.read(buffer, { type: "array" });
+                    
+                    // Find the restaurant_list sheet
+                    const sheetName = workbook.SheetNames.find(
+                        sheet => sheet.trim().toLowerCase() === "restaurant_list"
+                    );
+                    
+                    if (!sheetName) {
+                        console.error("restaurant_list sheet not found");
+                        return;
+                    }
+                    
+                    const sheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+                    const restaurantGrid = document.getElementById("restaurant-grid");
+                    
+                    // Clear any existing content
+                    restaurantGrid.innerHTML = "";
+                    
+                    // Create menu items for each restaurant
+                    sheet.forEach(restaurant => {
+                        const menuItem = document.createElement("a");
+                        menuItem.href = `menu.html?restaurant=${encodeURIComponent(restaurant.sheet_name)}`;
+                        menuItem.className = "menu-item";
+                        
+                        menuItem.innerHTML = `
+                            <img src="${restaurant.logo_path}" alt="${restaurant.restaurant_name}">
+                            <span>${restaurant.restaurant_name}</span>
+                        `;
+                        
+                        restaurantGrid.appendChild(menuItem);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error loading restaurant data:", error);
+                    document.getElementById("restaurant-grid").innerHTML = 
+                        "<p>Unable to load restaurant list. Please try again later.</p>";
+                });
+        }
     </script>
 </body>
-
 </html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadha Menu</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+    <!-- floating button -->
+    <a href="index.html" class="floating-home">
+        <img src="images/house_icon.png" alt="Home">
+    </a>
+
+    <!-- Restaurant Header Image -->
+    <div class="restaurant-header">
+        <img id="restaurant-banner" src="" alt="Restaurant Banner" class="restaurant-image">
+    </div>
+
+    <div class="container">
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <a href="https://forms.gle/Gv9ZDSDyN7YorPnAA" class="book-button">Book with Us</a>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="menu-switch">
+            <!-- Optional: Add different menu types if needed -->
+        </div>
+
+        <!-- Restaurant Title -->
+        <h2 id="restaurant-title" class="section-title"></h2>
+        
+        <!-- Day Selection Dropdown -->
+        <div class="day-selection">
+            <div style="text-align: center;">
+                <label for="day-select">Select Day:</label>
+                <select id="day-select">
+                    <option value="sunday">Sunday</option>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Menu Container -->
+        <div id="menu-container"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <div class="social-links">
+                <a href="https://web.facebook.com/profile.php?id=61573092196314" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+                <a href="https://www.instagram.com/roadha.online?igsh=MWp5MGFqcjFpdnA3Yg==" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get restaurant name from URL parameter
+        function getRestaurantFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('restaurant');
+        }
+
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609333396";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+
+        // Main function to load restaurant data and menu
+        document.addEventListener("DOMContentLoaded", function () {
+            const restaurantKey = getRestaurantFromURL();
+            
+            if (!restaurantKey) {
+                // Redirect to homepage if no restaurant specified
+                window.location.href = "index.html";
+                return;
+            }
+            
+            const excelFilePath = "restaurant_data.xlsx";
+            
+            fetch(excelFilePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${excelFilePath}`);
+                    }
+                    return response.blob();
+                })
+                .then(blob => blob.arrayBuffer())
+                .then(buffer => {
+                    const workbook = XLSX.read(buffer, { type: "array" });
+                    
+                    // First, get restaurant details from restaurant_list sheet
+                    const listSheetName = workbook.SheetNames.find(
+                        sheet => sheet.trim().toLowerCase() === "restaurant_list"
+                    );
+                    
+                    if (!listSheetName) {
+                        throw new Error("restaurant_list sheet not found");
+                    }
+                    
+                    const listSheet = XLSX.utils.sheet_to_json(workbook.Sheets[listSheetName]);
+                    const restaurantData = listSheet.find(
+                        r => r.sheet_name && r.sheet_name.toLowerCase() === restaurantKey.toLowerCase()
+                    );
+                    
+                    if (!restaurantData) {
+                        throw new Error(`Restaurant "${restaurantKey}" not found`);
+                    }
+                    
+                    // Set restaurant banner and title
+                    document.getElementById('restaurant-banner').src = restaurantData.banner_path;
+                    document.getElementById('restaurant-banner').alt = restaurantData.restaurant_name;
+                    document.getElementById('restaurant-title').textContent = `${restaurantData.restaurant_name} roadha Menu`;
+                    document.title = `${restaurantData.restaurant_name} - roadha Menu`;
+                    
+                    // Now load the menu for this restaurant
+                    const menuSheetName = workbook.SheetNames.find(
+                        sheet => sheet.trim().toLowerCase() === restaurantKey.toLowerCase()
+                    );
+                    
+                    if (!menuSheetName) {
+                        document.getElementById("menu-container").innerHTML = 
+                            "<p>No menu available for this restaurant.</p>";
+                        return;
+                    }
+                    
+                    const sheet = XLSX.utils.sheet_to_json(workbook.Sheets[menuSheetName], { header: 1 });
+                    const restaurantMenu = processMenuData(sheet);
+                    
+                    window.allMenus = restaurantMenu;
+                    
+                    // Set up day selector
+                    document.getElementById('day-select').addEventListener('change', updateMenu);
+                    updateMenu();
+                    
+                    function processMenuData(sheet) {
+                        const menu = {};
+                        
+                        sheet.forEach(row => {
+                            // Skip empty rows or rows without day
+                            if (!row[0] || typeof row[0] !== 'string') return;
+                            
+                            const day = row[0].toString().toLowerCase().trim();
+                            const category = row[1] ? row[1].toString().toLowerCase().trim() : '';
+                            const foodItem = row[2] ? row[2].toString().trim() : '';
+                            const price = row[3] ? row[3].toString().trim() : 'N/A';
+                            
+                            if (!menu[day]) {
+                                menu[day] = {
+                                    starters: [],
+                                    main_dishes: [],
+                                    desserts: [],
+                                    drinks: [],
+                                    price: 'N/A'
+                                };
+                            }
+                            
+                            // Update price if available (usually in first row for each day)
+                            if (price && price !== 'N/A' && price !== '') {
+                                menu[day].price = price;
+                            }
+                            
+                            // Add food item to appropriate category
+                            if (category && foodItem) {
+                                if (category.includes('starter')) {
+                                    menu[day].starters.push(foodItem);
+                                } else if (category.includes('main')) {
+                                    menu[day].main_dishes.push(foodItem);
+                                } else if (category.includes('dessert')) {
+                                    menu[day].desserts.push(foodItem);
+                                } else if (category.includes('drink')) {
+                                    menu[day].drinks.push(foodItem);
+                                }
+                            }
+                        });
+                        
+                        return menu;
+                    }
+                })
+                .catch(error => {
+                    console.error("Error loading data:", error);
+                    document.getElementById("menu-container").innerHTML = 
+                        `<p>Failed to load menu: ${error.message}</p>`;
+                });
+        });
+
+        function updateMenu() {
+            const day = document.getElementById('day-select').value.toLowerCase();
+            const menuContainer = document.getElementById('menu-container');
+            const restaurantName = getRestaurantFromURL();
+            
+            if (!window.allMenus || !window.allMenus[day]) {
+                menuContainer.innerHTML = "<p>No menu available for the selected day.</p>";
+                return;
+            }
+            
+            const menu = window.allMenus[day];
+            const dayCapitalized = day.charAt(0).toUpperCase() + day.slice(1);
+            
+            menuContainer.innerHTML = `
+                <h3>${dayCapitalized} Menu</h3>
+                <h4 class="menu-price">Price per pax: MVR ${menu.price}</h4>
+                ${generateMenuTable("Starters", menu.starters)}
+                ${generateMenuTable("Main Dishes", menu.main_dishes)}
+                ${generateMenuTable("Desserts", menu.desserts)}
+                ${generateMenuTable("Drinks", menu.drinks)}
+            `;
+        }
+
+        function generateMenuTable(title, items) {
+            if (!items || items.length === 0) return "";
+            
+            let tableHTML = `<table class="menu-table">
+                <thead><tr><th>${title}</th></tr></thead>
+                <tbody>`;
+            
+            items.forEach(item => {
+                tableHTML += `<tr><td>${item}</td></tr>`;
+            });
+            
+            tableHTML += `</tbody></table>`;
+            return tableHTML;
+        }
+    </script>
+</body>
+</html>

@@ -2,26 +2,46 @@
 <html lang="en">
 
 <head>
+    <meta name="google-site-verification" content="b27NoJLRygljrILz24w895198asoR3lqXXM_oz9zHBc"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramadan Menus</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 </head>
 
 <body>
     <header>
-        <h1 class="section-title"> MEDIA - KIT </h1>
-    </header>
-    <div>
-        <div class="menu-item">
-        <h2 class="menu-item">What we are</h2>
-        <span>our library of iftar and Tharaavees menus. no more hunting down menus on tons of scocial media pages. just a one stop for all your cravings</span>
+        <meta name="google-site-verification" content="b27NoJLRygljrILz24w895198asoR3lqXXM_oz9zHBc" />
+        <div class="header-container">
+            <img src="images/roadha_online_main_logo_v2.png" alt="main logo of roadha online" class="main-logo">
+            <img src="images/ramadan_mubarak_image_title v2.webp" alt="Ramadan Mubarak" class="header-image">
+            <h1 style="display: none;">roadha online</h1>
+            <h1 style="display: none;">iftar menus in maldives</h1>
+            <h1 style="display: none;">ramadan menus</h1>
+            <h1 style="display: none;">roadha promotion</h1>
+            <h1 style="display: none;">roadha mas 2025</h1>
+            <h1 style="display: none;">IFTAR MENU</h1>
+            <h1 style="display: none;">IFTAR TABLE</h1>
+            <h1 style="display: none;">MALDIVES</h1>
+            <h1 style="display: none;">roadha</h1>
+            <h1 style="display: none;">Restaurants</h1>
         </div>
 
-        
+        <!-- Slideshow container -->
+        <div class="scroll-container">
+            <a href="https://forms.gle/Gv9ZDSDyN7YorPnAA">
+                <img src="images/slideshow_images/book a Iftar and get a chance to win e.png" alt="promotion" width="360" height="300">
+            </a>
+        </div>
+    </header>
+    
+    <div>
+        <h2 class="section-title">Our Restaurants</h2>
+        <div id="restaurant-grid" class="menu-grid">
+            <!-- Dynamic content will be inserted here -->
+        </div>
     </div>
-
-    <br>
 
     <footer>
         <div class="footer-content">
@@ -38,6 +58,29 @@
     </footer>
 
     <script>
+        // scrolls the promotion across the screen
+        document.addEventListener("DOMContentLoaded", function () {
+            const scrollContainer = document.querySelector(".scroll-container");
+            let scrollAmount = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            const scrollStep = 40;
+            const scrollDelay = 0.000000001;
+
+            function scrollReverse() {
+                if (scrollAmount <= 0) {
+                    return;
+                }
+                scrollAmount -= scrollStep;
+                scrollContainer.scrollLeft = scrollAmount;
+                requestAnimationFrame(scrollReverse);
+            }
+
+            scrollContainer.scrollLeft = scrollAmount;
+            requestAnimationFrame(scrollReverse);
+            
+            // Load restaurant data from Excel
+            loadRestaurantData();
+        });
+
         function copyPhoneNumber() {
             const phoneNumber = "+9609333396";
             navigator.clipboard.writeText(phoneNumber)
@@ -48,7 +91,60 @@
                     console.error('Failed to copy phone number: ', err);
                 });
         }
+
+        function loadRestaurantData() {
+            const excelFilePath = "restaurant_data.xlsx";
+            
+            fetch(excelFilePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${excelFilePath}`);
+                    }
+                    return response.blob();
+                })
+                .then(blob => blob.arrayBuffer())
+                .then(buffer => {
+                    const workbook = XLSX.read(buffer, { type: "array" });
+                    
+                    // Find the restaurant_list sheet
+                    const sheetName = workbook.SheetNames.find(
+                        sheet => sheet.trim().toLowerCase() === "restaurant_list"
+                    );
+                    
+                    if (!sheetName) {
+                        console.error("restaurant_list sheet not found");
+                        return;
+                    }
+                    
+                    const sheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+                    const restaurantGrid = document.getElementById("restaurant-grid");
+                    
+                    // Clear any existing content
+                    restaurantGrid.innerHTML = "";
+                    
+                    // Create menu items for each restaurant
+                    sheet.forEach(restaurant => {
+                        console.log("Restaurant object:", restaurant);
+                        console.log("Available properties:", Object.keys(restaurant));
+                        
+                        const menuItem = document.createElement("a");
+                        menuItem.href = `menu.html?restaurant=${encodeURIComponent(restaurant.sheet_name)}`;
+                        menuItem.className = "menu-item";
+                        
+                        menuItem.innerHTML = `
+                            <img src="${restaurant.logo_path}" alt="${restaurant.restaurant_name}">
+                            <span>${restaurant.restaurant_name}</span>
+                        `;
+                        
+                        restaurantGrid.appendChild(menuItem);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error loading restaurant data:", error);
+                    document.getElementById("restaurant-grid").innerHTML = 
+                        "<p>Unable to load restaurant list. Please try again later.</p>";
+                });
+        }
     </script>
 </body>
-
 </html>

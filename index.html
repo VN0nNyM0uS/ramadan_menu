@@ -124,6 +124,9 @@
                     
                     // Create menu items for each restaurant
                     sheet.forEach(restaurant => {
+                        console.log("Restaurant object:", restaurant);
+                        console.log("Available properties:", Object.keys(restaurant));
+                        
                         const menuItem = document.createElement("a");
                         menuItem.href = `menu.html?restaurant=${encodeURIComponent(restaurant.sheet_name)}`;
                         menuItem.className = "menu-item";

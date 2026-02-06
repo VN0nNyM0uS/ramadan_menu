@@ -28,11 +28,21 @@
             <h1 style="display: none;">Restaurants</h1>
         </div>
 
+        <!-- Main Sponsor Ad -->
+        <div class="main-sponsor-ad">
+            <img src="images/ads/main_sponsor.png" alt="Main Sponsor">
+        </div>
+
         <!-- Slideshow container -->
-        <div class="scroll-container">
-            <a href="https://forms.gle/Gv9ZDSDyN7YorPnAA">
-                <img src="images/slideshow_images/book a Iftar and get a chance to win e.png" alt="promotion" width="360" height="300">
-            </a>
+        <div class="slideshow-wrapper">
+            <div class="slideshow-scroll-container">
+                <a href="under_construction.html" target="_blank" class="slideshow-ad">
+                    <img src="images/slideshow_images/book a Iftar and get a chance to win e.png" alt="promotion" class="slideshow-img">
+                </a>
+                <a href="under_construction.html" target="_blank" class="slideshow-ad">
+                    <img src="images/slideshow_images/book a Iftar and get a chance to win e.png" alt="promotion" class="slideshow-img">
+                </a>
+            </div>
         </div>
     </header>
     
@@ -40,6 +50,7 @@
         <h2 class="section-title">Our Restaurants</h2>
         <div id="restaurant-grid" class="menu-grid">
             <!-- Dynamic content will be inserted here -->
+             <!-- banner add displayed in the middle (images/ads/banner_ad.png) -->
         </div>
     </div>
 
@@ -53,29 +64,34 @@
                 <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
                     <img src="images/contact_logo/phone_logo.png" alt="Phone">
                 </a>
+                <!-- footer ad here (images/ads/footer_ad.png) -->
             </div>
         </div>
     </footer>
 
     <script>
-        // scrolls the promotion across the screen
+        // Continuous slideshow animation
         document.addEventListener("DOMContentLoaded", function () {
-            const scrollContainer = document.querySelector(".scroll-container");
-            let scrollAmount = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-            const scrollStep = 40;
-            const scrollDelay = 0.000000001;
+            const slideshowContainer = document.querySelector(".slideshow-scroll-container");
+            const speed = 2; // pixels per frame
+            let scrollPosition = 0;
 
-            function scrollReverse() {
-                if (scrollAmount <= 0) {
-                    return;
+            function animateSlideshow() {
+                scrollPosition += speed;
+                
+                // Get the total scrollable width
+                const maxScroll = slideshowContainer.scrollWidth - slideshowContainer.clientWidth;
+                
+                // Loop back to start when reaching the end
+                if (scrollPosition > maxScroll) {
+                    scrollPosition = 0;
                 }
-                scrollAmount -= scrollStep;
-                scrollContainer.scrollLeft = scrollAmount;
-                requestAnimationFrame(scrollReverse);
+                
+                slideshowContainer.scrollLeft = scrollPosition;
+                requestAnimationFrame(animateSlideshow);
             }
 
-            scrollContainer.scrollLeft = scrollAmount;
-            requestAnimationFrame(scrollReverse);
+            animateSlideshow();
             
             // Load restaurant data from Excel
             loadRestaurantData();

@@ -362,6 +362,51 @@ footer {
 }
 /* end of floating home button */
 
+/* Main Sponsor Ad */
+.main-sponsor-ad {
+    text-align: center;
+    padding: 20px 0;
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+.main-sponsor-ad img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Slideshow Wrapper and Container */
+.slideshow-wrapper {
+    padding: 20px 0;
+}
+
+.slideshow-scroll-container {
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    max-height: 250px;
+}
+
+.slideshow-ad {
+    display: inline-block;
+    flex-shrink: 0;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.slideshow-img {
+    height: 250px;
+    width: auto;
+    border-radius: 10%;
+    transition: transform 0.3s ease;
+}
+
+.slideshow-img:hover {
+    transform: scale(1.05);
+}
+
 /* silder stuff */
 
 div.scroll-container {

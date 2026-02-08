@@ -43,10 +43,10 @@
                     <img src="images/ads/slideshow_sponsor_2.png" alt="promotion" class="slideshow-img">
                 </a>
                 <a href="under_construction.html" target="_blank" class="slideshow-ad">
-                    <img src="images/ads/slideshow_sponsor_3.png alt="promotion" class="slideshow-img">
+                    <img src="images/ads/slideshow_sponsor_3.png "alt="promotion" class="slideshow-img">
                 </a>
                 <a href="under_construction.html" target="_blank" class="slideshow-ad">
-                    <img src="images/ads/slideshow_sponsor_4.png alt="promotion" class="slideshow-img">
+                    <img src="images/ads/slideshow_sponsor_4.png "alt="promotion" class="slideshow-img">
                 </a>
             </div>
         </div>
@@ -62,7 +62,7 @@
 
     <div id="footer-banner">
         <a href="under_construction.html">
-            <img src="images/ads/footer_ad.png" alt="Footer Ad">
+            <img src="images/ads/footer_ad.png" alt="Footer Ad" style="width: 100%; height: auto; display: block;">
         </a>
     </div>
 
@@ -91,17 +91,23 @@
             function animateSlideshow() {
                 scrollPosition += speed;
                 
-                // Get the total scrollable width
+                // Get dimensions
+                const itemWidth = slideshowContainer.querySelector(".slideshow-ad").offsetWidth;
                 const maxScroll = slideshowContainer.scrollWidth - slideshowContainer.clientWidth;
                 
-                // Loop back to start when reaching the end
+                // Loop smoothly by cloning items
                 if (scrollPosition > maxScroll) {
                     scrollPosition = 0;
+                    slideshowContainer.scrollLeft = 0;
                 }
                 
                 slideshowContainer.scrollLeft = scrollPosition;
                 requestAnimationFrame(animateSlideshow);
             }
+
+            // Duplicate items for seamless loop
+            const items = slideshowContainer.innerHTML;
+            slideshowContainer.innerHTML += items;
 
             animateSlideshow();
             

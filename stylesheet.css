@@ -104,6 +104,14 @@ body {
     font-size: 1.2rem;
 }
 
+.footer_banner{
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
 footer {
     background-color: rgb(255, 0, 0);
     padding: 20px;
@@ -386,7 +394,7 @@ footer {
     overflow: hidden;
     white-space: nowrap;
     display: flex;
-    max-height: 50px;
+    max-height: 150px;
 }
 
 .slideshow-ad {
@@ -397,14 +405,14 @@ footer {
 }
 
 .slideshow-img {
-    height: 45px;
+    height: 70px;
     width: auto;
     border-radius: 10%;
     transition: transform 0.3s ease;
 }
 
 .slideshow-img:hover {
-    transform: scale(1.5);
+    transform: scale(1.50);
 }
 
 /* silder stuff */

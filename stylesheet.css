@@ -371,7 +371,7 @@ footer {
 }
 
 .main-sponsor-ad img {
-    max-width: 90%;
+    max-width: 40%;
     height: auto;
     border-radius: 10%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -386,7 +386,7 @@ footer {
     overflow: hidden;
     white-space: nowrap;
     display: flex;
-    max-height: 250px;
+    max-height: 50px;
 }
 
 .slideshow-ad {
@@ -397,14 +397,14 @@ footer {
 }
 
 .slideshow-img {
-    height: 250px;
+    height: 45px;
     width: auto;
     border-radius: 10%;
     transition: transform 0.3s ease;
 }
 
 .slideshow-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.5);
 }
 
 /* silder stuff */

@@ -104,19 +104,26 @@ body {
     font-size: 1.2rem;
 }
 
-.footer_banner{
-    max-width: 60%;
-    height: auto;
+/* footer banner */
+#footer-banner {
+    max-width: 40%;
     margin: 20px auto;
-    display: flex;
-    justify-content: center;
+    display: block;
+    text-align: center;
 }
 
-.footer_banner_img {
-    width: 60%;
+#footer-banner img {
+    width: 100%;
     height: auto;
-    border-radius: 10%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Make it responsive for mobile */
+@media (max-width: 768px) {
+    #footer-banner {
+        max-width: 80%; /* Larger on mobile for better visibility */
+    }
 }
 
 footer {
@@ -396,27 +403,28 @@ footer {
 .slideshow-wrapper {
     padding: 10px 0;
     overflow: hidden;
-    position: relative;
-    width: 100%;
-}
-
-.slideshow-scroll-container {
     display: flex;
-    width: max-content;
-    animation: slide 5s linear infinite;
+    gap: 0; /* Remove gap between groups */
 }
 
-.slideshow-scroll-container:hover {
+.slideshow-group {
+    display: flex;
+    gap: 5px; /* Reduced gap between images */
+    padding-right: 5px; /* Small gap between groups */
+    animation: scrolling 5s linear infinite; /* Faster: 50% faster than 10s */
+    will-change: transform; /* Optimize for animation */
+}
+
+.slideshow-wrapper:hover .slideshow-group {
     animation-play-state: paused;
 }
 
 .slideshow-ad {
     flex: 0 0 auto;
-    margin: 0 5px;
-    transition: transform 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .slideshow-ad:hover {
@@ -430,43 +438,26 @@ footer {
     object-fit: contain;
 }
 
-/* Keyframes for smooth infinite scrolling */
-@keyframes slide {
+@keyframes scrolling {
     0% {
         transform: translateX(0);
     }
-    200% {
-        transform: translateX(-25%); /* Only move by 25% since we have 8 items total */
+    100% {
+        transform: translateX(-100%);
     }
 }
 
-/* Fade edges for a polished look */
+/* Remove the fade edges since you don't want them */
 .slideshow-wrapper::before,
 .slideshow-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.slideshow-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, #491137 0%, transparent 100%);
-}
-
-.slideshow-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, #491137 0%, transparent 100%);
+    display: none;
 }
 
 
 
 /* silder stuff */
 
-div.scroll-container {
+/* div.scroll-container {
     overflow: auto;
     white-space: nowrap;
 }
@@ -474,7 +465,7 @@ div.scroll-container {
 div.scroll-container img {
     border-radius: 10%;
     padding: 10px;
-}
+} */
 
 
 /* Day Selection Dropdown Styling */

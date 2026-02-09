@@ -112,6 +112,13 @@ body {
     justify-content: center;
 }
 
+.footer_banner_img {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 footer {
     background-color: rgb(255, 0, 0);
     padding: 20px;
@@ -373,13 +380,13 @@ footer {
 /* Main Sponsor Ad */
 .main-sponsor-ad {
     text-align: center;
-    padding: 20px 0;
-    margin: 20px auto;
-    max-width: 100%;
+    padding: 10px 0;
+    margin: 10px auto;
+    max-width: 110%;
 }
 
 .main-sponsor-ad img {
-    max-width: 40%;
+    max-width: 50%;
     height: auto;
     border-radius: 10%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -387,7 +394,7 @@ footer {
 
 /* Slideshow Wrapper and Container */
 .slideshow-wrapper {
-    padding: 20px 0;
+    padding: 5px 0;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -396,7 +403,7 @@ footer {
 .slideshow-scroll-container {
     display: flex;
     width: max-content;
-    animation: slide 30s linear infinite;
+    animation: slide 10s linear infinite;
 }
 
 .slideshow-scroll-container:hover {
@@ -414,7 +421,7 @@ footer {
 }
 
 .slideshow-img {
-    height: 120px;
+    height: 70px;
     width: auto;
     border-radius: 10%;
     object-fit: contain;

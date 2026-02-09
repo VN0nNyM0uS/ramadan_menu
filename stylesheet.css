@@ -394,10 +394,11 @@ footer {
 
 /* Slideshow Wrapper and Container */
 .slideshow-wrapper {
-    padding: 5px 0;
+    padding: 10px 0;
     overflow: hidden;
     position: relative;
     width: 100%;
+    background-color: rgba(73, 17, 55, 0.8);
 }
 
 .slideshow-scroll-container {
@@ -414,6 +415,9 @@ footer {
     flex: 0 0 auto;
     margin: 0 15px;
     transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slideshow-ad:hover {
@@ -427,13 +431,36 @@ footer {
     object-fit: contain;
 }
 
+/* Keyframes for smooth infinite scrolling */
 @keyframes slide {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-25%); /* Only move by 25% since we have 8 items total */
     }
+}
+
+/* Fade edges for a polished look */
+.slideshow-wrapper::before,
+.slideshow-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.slideshow-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, #491137 0%, transparent 100%);
+}
+
+.slideshow-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, #491137 0%, transparent 100%);
 }
 
 

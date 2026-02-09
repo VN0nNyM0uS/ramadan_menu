@@ -404,7 +404,7 @@ footer {
     padding: 10px 0;
     overflow: hidden;
     display: flex;
-    gap: 5px; /* Remove gap between groups */
+    gap: 0px; /* Remove gap between groups */
 }
 
 .slideshow-group {

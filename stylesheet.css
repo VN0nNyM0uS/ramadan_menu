@@ -105,7 +105,7 @@ body {
 }
 
 .footer_banner{
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
     margin: 20px auto;
     display: flex;
@@ -388,32 +388,48 @@ footer {
 /* Slideshow Wrapper and Container */
 .slideshow-wrapper {
     padding: 20px 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
 
 .slideshow-scroll-container {
-    overflow: hidden;
-    white-space: nowrap;
     display: flex;
-    max-height: 150px;
+    width: max-content;
+    animation: slide 30s linear infinite;
+}
+
+.slideshow-scroll-container:hover {
+    animation-play-state: paused;
 }
 
 .slideshow-ad {
-    display: inline-block;
-    flex-shrink: 0;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.slideshow-img {
-    height: 70px;
-    width: auto;
-    border-radius: 10%;
+    flex: 0 0 auto;
+    margin: 0 15px;
     transition: transform 0.3s ease;
 }
 
-.slideshow-img:hover {
-    transform: scale(1.50);
+.slideshow-ad:hover {
+    transform: scale(1.1);
 }
+
+.slideshow-img {
+    height: 120px;
+    width: auto;
+    border-radius: 10%;
+    object-fit: contain;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
 
 /* silder stuff */
 

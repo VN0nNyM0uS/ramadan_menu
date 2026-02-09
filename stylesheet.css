@@ -404,12 +404,13 @@ footer {
     padding: 10px 0;
     overflow: hidden;
     display: flex;
-    gap: 0; /* Remove gap between groups */
+    gap: 5px; /* Remove gap between groups */
 }
 
 .slideshow-group {
     display: flex;
     gap: 5px;
+    padding-right: 5px; /* Small gap between groups */
     animation: scrolling 10s linear infinite; /* how fast should the scrolling be*/
     will-change: transform; /* Optimize for animation */
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>ad prices</title>
+</head>
+<body>
+    <header>
+        <h1>Ad Prices</h1>
+        <p>welcome. please view our pricing for your ad placement. get some eyeballs on your bussiness or product</p>
+    </header>
+    <br>
+    <hr>
+    <div>
+        <h1>main sponsor</h1>
+        <p>be the center of attention. the big ad. only the blind will fail to notice you</p>
+        <p>price: 50,000</p>
+    </div>
+    <br><hr>
+
+    <div>
+        <h1>slideshow</h1>
+        <p>slide into the attention of potential customers. the moving pictures will dazzle and get your bussiness/product out and about</p>
+        <p>price: 10,000</p>
+    </div>
+    <br><hr>
+
+    <div>
+        <h1>footer</h1>
+        <p>at the bottom where people are done looking at our selection of restaurants. be the suprise attack.</p>
+        <p>price: 10</p>
+    </div>
+    <br><hr>
+
+    <div>
+        <h1>menu footer ad</h1>
+        <p>be the last thing the user expenrience. leave a lasting impression.</p>
+        <p>price: free, you greedy fuck</p>
+    </div>
+    <br><hr>
+
+    <div>
+        <h1>contact now</h1>
+        <p>send us an email or contact us. you will not regret.</p>
+        <div class="social-links">
+            <a href="https://web.facebook.com/profile.php?id=61573092196314" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+            <a href="https://www.instagram.com/roadha.online?igsh=MWp5MGFqcjFpdnA3Yg==" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+            <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                <img src="images/contact_logo/phone_logo.png" alt="Phone">
+            </a>
+            <a onclick="copyEmail">
+                <img src="images/contact_logo/email.png" alt="our email">
+            </a>
+        </div>
+    </div>
+    <br><hr>
+    
+</body>
+
+
+<script>
+
+    function copyPhoneNumber() {
+    const phoneNumber = "+9609333396";
+        navigator.clipboard.writeText(phoneNumber)
+            .then(() => {
+                alert("Phone number copied to clipboard: " + phoneNumber);
+            })
+            .catch(err => {
+                console.error('Failed to copy phone number: ', err);
+            });
+    }
+
+    function copyEmail() {
+    const email = "info@creativeside.com";
+        navigator.clipboard.writeText(email)
+            .then(() => {
+                alert("Phone number copied to clipboard: " + email);
+            })
+            .catch(err => {
+                console.error('Failed to copy phone number: ', err);
+            });
+    }
+
+</script>
+</html>

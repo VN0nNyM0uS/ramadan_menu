@@ -27,13 +27,6 @@
             <h1 style="display: none;">roadha</h1>
             <h1 style="display: none;">Restaurants</h1>
         </div>
-
-        <!-- Slideshow container -->
-        <div class="scroll-container">
-            <a href="https://forms.gle/Gv9ZDSDyN7YorPnAA">
-                <img src="images/slideshow_images/book a Iftar and get a chance to win e.png" alt="promotion" width="360" height="300">
-            </a>
-        </div>
     </header>
     
     <div>
@@ -58,25 +51,7 @@
     </footer>
 
     <script>
-        // scrolls the promotion across the screen
         document.addEventListener("DOMContentLoaded", function () {
-            const scrollContainer = document.querySelector(".scroll-container");
-            let scrollAmount = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-            const scrollStep = 40;
-            const scrollDelay = 0.000000001;
-
-            function scrollReverse() {
-                if (scrollAmount <= 0) {
-                    return;
-                }
-                scrollAmount -= scrollStep;
-                scrollContainer.scrollLeft = scrollAmount;
-                requestAnimationFrame(scrollReverse);
-            }
-
-            scrollContainer.scrollLeft = scrollAmount;
-            requestAnimationFrame(scrollReverse);
-            
             // Load restaurant data from Excel
             loadRestaurantData();
         });

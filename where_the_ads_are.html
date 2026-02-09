@@ -82,65 +82,7 @@
     </footer>
 
     <script>
-        // Continuous slideshow animation
         document.addEventListener("DOMContentLoaded", function () {
-            const slideshowContainer = document.querySelector(".slideshow-scroll-container");
-            const speed = 1; // Slower speed for better visual experience
-            let scrollPosition = 0;
-            let animationId = null;
-            let isPaused = false;
-
-            // Clone items for seamless looping
-            function setupSlideshow() {
-                // Get all original ad items
-                const items = slideshowContainer.innerHTML;
-                // Duplicate the items to create seamless loop
-                slideshowContainer.innerHTML = items + items;
-                
-                // Store the width of original content (before duplication)
-                const originalWidth = slideshowContainer.scrollWidth / 2;
-                
-                // Start animation
-                animateSlideshow(originalWidth);
-            }
-
-            function animateSlideshow(originalWidth) {
-                if (isPaused) return;
-                
-                scrollPosition += speed;
-                
-                // When we've scrolled through the first set of items,
-                // reset scroll position to create seamless loop
-                if (scrollPosition >= originalWidth) {
-                    scrollPosition = 0;
-                    slideshowContainer.scrollLeft = 0;
-                } else {
-                    slideshowContainer.scrollLeft = scrollPosition;
-                }
-                
-                animationId = requestAnimationFrame(() => animateSlideshow(originalWidth));
-            }
-
-            // Pause animation on hover for better user experience
-            slideshowContainer.addEventListener('mouseenter', () => {
-                isPaused = true;
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                    animationId = null;
-                }
-            });
-
-            slideshowContainer.addEventListener('mouseleave', () => {
-                isPaused = false;
-                if (!animationId) {
-                    // Get current width for seamless restart
-                    const originalWidth = slideshowContainer.scrollWidth / 2;
-                    animateSlideshow(originalWidth);
-                }
-            });
-
-            setupSlideshow();
-            
             // Load restaurant data from Excel
             loadRestaurantData();
         });

@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramadan Menus</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheet.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 </head>
@@ -38,23 +39,24 @@
             <img src="images/ads/main_sponsor.png" alt="Main Sponsor">
         </div>
 
+        <!-- carosel stuff -->
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="1200">
             <div class="carousel-inner">
-                <!-- Slide 1 - MUST have the 'active' class -->
+                <!-- Slide 1 -->
                 <div class="item active">
-                    <img class="d-block w-100" src="images/ads/slideshow_sponsor_1.png" alt="First sponsor promotion">
+                    <img src="images/ads/slideshow_sponsor_1.png" alt="First sponsor promotion">
                 </div>
                 <!-- Slide 2 -->
                 <div class="item">
-                    <img class="d-block w-100" src="images/ads/slideshow_sponsor_2.png" alt="Second sponsor promotion">
+                    <img src="images/ads/slideshow_sponsor_2.png" alt="Second sponsor promotion">
                 </div>
                 <!-- Slide 3 -->
                 <div class="item">
-                    <img class="d-block w-100" src="images/ads/slideshow_sponsor_3.png" alt="Third sponsor promotion">
+                    <img src="images/ads/slideshow_sponsor_3.png" alt="Third sponsor promotion">
                 </div>
                 <!-- Slide 4 -->
                 <div class="item">
-                    <img class="d-block w-100" src="images/ads/slideshow_sponsor_4.png" alt="Fourth sponsor promotion">
+                    <img src="images/ads/slideshow_sponsor_4.png" alt="Fourth sponsor promotion">
                 </div>
             </div>
         </div>
@@ -123,6 +125,17 @@
         </div>
     </footer>
 
+
+
+    <!-- jQuery - REQUIRED FOR BOOTSTRAP 3 (for the carosel)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Bootstrap 3 JavaScript - REQUIRED FOR CAROUSEL -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+
+    <!-- customs scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Load restaurant data from Excel
@@ -192,6 +205,9 @@
                     document.getElementById("restaurant-grid").innerHTML = 
                         "<p>Unable to load restaurant list. Please try again later.</p>";
                 });
+            $('.carousel').carousel({
+                interval: 1200
+            });
         }
     </script>
 </body>

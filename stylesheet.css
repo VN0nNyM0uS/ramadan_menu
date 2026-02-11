@@ -454,6 +454,32 @@ footer {
 }
 
 
+/* carousel one by one images */
+.carousel-inner > .item > img {
+            width: 100%;
+            height: auto;
+            max-height: 300px; /* Adjust this value as needed */
+            object-fit: contain;
+            margin: 0 auto;
+        }
+        
+        /* Ensure carousel has proper dimensions */
+        .carousel {
+            max-width: 800px; /* Adjust based on your design */
+            margin: 20px auto;
+        }
+        
+        /* For smaller screens */
+        @media (max-width: 768px) {
+            .carousel-inner > .item > img {
+                max-height: 200px;
+            }
+            .carousel {
+                max-width: 100%;
+                margin: 10px auto;
+            }
+        }
+
 
 /* silder stuff */
 

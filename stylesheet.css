@@ -387,15 +387,15 @@ footer {
 /* Main Sponsor Ad */
 .main-sponsor-ad {
     text-align: center;
-    padding: 10px 0;
-    margin: 10px auto;
+    padding: 3px 0;
+    margin: 5px auto;
     max-width: 110%;
 }
 
 .main-sponsor-ad img {
-    max-width: 70%;
+    max-width: 90%;
     height: auto;
-    border-radius: 10%;
+    border-radius: 5%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -456,16 +456,16 @@ footer {
 
 /* carousel one by one images */
 .carousel-inner > .item > img {
-            width: 100%;
+            width: 70%;
             height: auto;
-            max-height: 300px; /* Adjust this value as needed */
+            max-height: 100px; /* Adjust this value as needed */
             object-fit: contain;
             margin: 0 auto;
         }
         
         /* Ensure carousel has proper dimensions */
         .carousel {
-            max-width: 800px; /* Adjust based on your design */
+            max-width: 600px; /* Adjust based on your design */
             margin: 20px auto;
         }
         
@@ -475,7 +475,7 @@ footer {
                 max-height: 200px;
             }
             .carousel {
-                max-width: 100%;
+                max-width: 80%;
                 margin: 10px auto;
             }
         }

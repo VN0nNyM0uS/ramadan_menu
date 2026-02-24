@@ -30,9 +30,9 @@
         </div>
 
         <!-- go to ad prices -->
-        <div class="button-group">
+        <!-- <div class="button-group">
             <a href="ad_prices.html" class="book-button">view sponsor pricing</a>
-        </div>
+        </div> -->
 
         <!-- Main Sponsor Ad -->
         <div class="main-sponsor-ad">
@@ -141,10 +141,29 @@
 
     <!-- customs scripts -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Load restaurant data from Excel
-            loadRestaurantData();
-        });
+        document.addEventListener("DOMContentLoaded", loadRestaurants);
+
+        function loadRestaurants() {
+            fetch("restaurant_data.csv")
+                .then(res => res.text())
+                .then(text => {
+                    const rows = text.trim().split("\n").slice(1);
+                    const grid = document.getElementById("restaurant-grid");
+                    grid.innerHTML = "";
+
+                    rows.forEach(row => {
+                        const [key, name, logo] = row.split(",");
+                        const a = document.createElement("a");
+                        a.href = `menu.html?restaurant=${encodeURIComponent(key)}`;
+                        a.className = "menu-item";
+                        a.innerHTML = `
+                            <img src="${logo}" alt="${name}">
+                            <span>${name}</span>
+                        `;
+                        grid.appendChild(a);
+                    });
+                });
+        }
 
         function copyPhoneNumber() {
             const phoneNumber = "+9609333396";
@@ -157,62 +176,6 @@
                 });
         }
 
-        function loadRestaurantData() {
-            const excelFilePath = "restaurant_data.xlsx";
-            
-            fetch(excelFilePath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Failed to load ${excelFilePath}`);
-                    }
-                    return response.blob();
-                })
-                .then(blob => blob.arrayBuffer())
-                .then(buffer => {
-                    const workbook = XLSX.read(buffer, { type: "array" });
-                    
-                    // Find the restaurant_list sheet
-                    const sheetName = workbook.SheetNames.find(
-                        sheet => sheet.trim().toLowerCase() === "restaurant_list"
-                    );
-                    
-                    if (!sheetName) {
-                        console.error("restaurant_list sheet not found");
-                        return;
-                    }
-                    
-                    const sheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-                    const restaurantGrid = document.getElementById("restaurant-grid");
-                    
-                    // Clear any existing content
-                    restaurantGrid.innerHTML = "";
-                    
-                    // Create menu items for each restaurant
-                    sheet.forEach(restaurant => {
-                        console.log("Restaurant object:", restaurant);
-                        console.log("Available properties:", Object.keys(restaurant));
-                        
-                        const menuItem = document.createElement("a");
-                        menuItem.href = `menu.html?restaurant=${encodeURIComponent(restaurant.sheet_name)}`;
-                        menuItem.className = "menu-item";
-                        
-                        menuItem.innerHTML = `
-                            <img src="${restaurant.logo_path}" alt="${restaurant.restaurant_name}">
-                            <span>${restaurant.restaurant_name}</span>
-                        `;
-                        
-                        restaurantGrid.appendChild(menuItem);
-                    });
-                })
-                .catch(error => {
-                    console.error("Error loading restaurant data:", error);
-                    document.getElementById("restaurant-grid").innerHTML = 
-                        "<p>Unable to load restaurant list. Please try again later.</p>";
-                });
-            $('.carousel').carousel({
-                interval: 2200
-            });
-        }
     </script>
 </body>
 </html>

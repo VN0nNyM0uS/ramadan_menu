@@ -26,7 +26,7 @@
 
         <h2 id="title" class="section-title"></h2>
 
-        <div class="carousel">
+        <div class="carousel-menu">
             <button id="prev">◀</button>
             <img id="menu-image">
             <button id="next">▶</button>
@@ -59,14 +59,9 @@
         function copyPhoneNumber() {
             const phoneNumber = "+9609333396";
             navigator.clipboard.writeText(phoneNumber)
-                .then(() => {
-                    alert("Phone number copied to clipboard: " + phoneNumber);
-                })
-                .catch(err => {
-                    console.error('Failed to copy phone number: ', err);
-                });
+                .then(() => alert("Phone number copied"))
+                .catch(err => console.error(err));
         }
-
 
         const params = new URLSearchParams(location.search);
         const key = params.get("restaurant");
@@ -89,7 +84,7 @@
                 const [, name, , banner, count] = row;
 
                 document.getElementById("title").textContent = name;
-                document.getElementById("banner").src = banner;
+                document.getElementById("restaurant-banner").src = banner;
                 document.title = name + " Menu";
 
                 for (let i = 1; i <= Number(count); i++) {

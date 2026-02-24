@@ -1,75 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Menu</title>
-<link rel="stylesheet" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="stylesheet.css">
 </head>
 
-<body>
+    <body>
 
-<a href="index.html" class="floating-home">
-    <img src="images/house_icon.png">
-</a>
+        <a href="index.html" class="floating-home">
+            <img src="images/house_icon.png">
+        </a>
 
-<div class="restaurant-header">
-    <img id="banner">
-</div>
+        <div class="restaurant-header">
+            <img id="banner">
+        </div>
 
-<h2 id="title"></h2>
+        <h2 id="title"></h2>
 
-<div class="carousel">
-    <button id="prev">◀</button>
-    <img id="menu-image">
-    <button id="next">▶</button>
-</div>
+        <div class="carousel">
+            <button id="prev">◀</button>
+            <img id="menu-image">
+            <button id="next">▶</button>
+        </div>
 
-<script>
-const params = new URLSearchParams(location.search);
-const key = params.get("restaurant");
-if (!key) location.href = "index.html";
+        <script>
+            const params = new URLSearchParams(location.search);
+            const key = params.get("restaurant");
+            if (!key) location.href = "under_construction.html";
 
-let images = [];
-let index = 0;
+            let images = [];
+            let index = 0;
 
-fetch("restaurant_data.csv")
-    .then(res => res.text())
-    .then(text => {
-        const rows = text.trim().split("\n").slice(1);
+            fetch("restaurant_data.csv")
+                .then(res => res.text())
+                .then(text => {
+                    const rows = text.trim().split("\n").slice(1);
 
-        const row = rows
-            .map(r => r.split(","))
-            .find(r => r[0] === key);
+                    const row = rows
+                        .map(r => r.split(","))
+                        .find(r => r[0] === key);
 
-        if (!row) throw "Restaurant not found";
+                    if (!row) throw "Restaurant not found";
 
-        const [, name, , banner, count] = row;
+                    const [, name, , banner, count] = row;
 
-        document.getElementById("title").textContent = name;
-        document.getElementById("banner").src = banner;
-        document.title = name + " Menu";
+                    document.getElementById("title").textContent = name;
+                    document.getElementById("banner").src = banner;
+                    document.title = name + " Menu";
 
-        for (let i = 1; i <= Number(count); i++) {
-            images.push(`images/${key}/menu/${i}.jpg`);
-        }
+                    for (let i = 1; i <= Number(count); i++) {
+                        images.push(`images/${key}/menu/${i}.jpeg`);
+                    }
 
-        document.getElementById("menu-image").src = images[0];
-    });
+                    document.getElementById("menu-image").src = images[0];
+                });
 
-document.getElementById("prev").onclick = () => {
-    index = (index - 1 + images.length) % images.length;
-    update();
-};
+            document.getElementById("prev").onclick = () => {
+                index = (index - 1 + images.length) % images.length;
+                update();
+            };
 
-document.getElementById("next").onclick = () => {
-    index = (index + 1) % images.length;
-    update();
-};
+            document.getElementById("next").onclick = () => {
+                index = (index + 1) % images.length;
+                update();
+            };
 
-function update() {
-    document.getElementById("menu-image").src = images[index];
-}
-</script>
+            function update() {
+                document.getElementById("menu-image").src = images[index];
+            }
+        </script>
 
-</body>
+    </body>
 </html>

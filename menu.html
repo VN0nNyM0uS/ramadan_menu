@@ -2,21 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadha Menu</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 </head>
 
     <body>
-
+        <!-- floating button -->
         <a href="index.html" class="floating-home">
             <img src="images/house_icon.png">
         </a>
 
         <div class="restaurant-header">
-            <img id="banner">
+            <img id="restaurant-banner" alt="Restaurant Banner" class="restaurant-image">
         </div>
 
-        <h2 id="title"></h2>
+        <div class="container">
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <a href="under_construction.html" class="book-button">Book with Us</a>
+        </div>
+
+        <h2 id="title" class="section-title"></h2>
 
         <div class="carousel">
             <button id="prev">◀</button>
@@ -24,52 +32,85 @@
             <button id="next">▶</button>
         </div>
 
-        <script>
-            const params = new URLSearchParams(location.search);
-            const key = params.get("restaurant");
-            if (!key) location.href = "under_construction.html";
+        <div id="footer-banner">
+            <a href="under_construction.html">
+                <img src="images/ads/menu_footer_banner_ad.png" alt="menu footer Footer Ad">
+            </a>
+        </div>
 
-            let images = [];
-            let index = 0;
-
-            fetch("restaurant_data.csv")
-                .then(res => res.text())
-                .then(text => {
-                    const rows = text.trim().split("\n").slice(1);
-
-                    const row = rows
-                        .map(r => r.split(","))
-                        .find(r => r[0] === key);
-
-                    if (!row) throw "Restaurant not found";
-
-                    const [, name, , banner, count] = row;
-
-                    document.getElementById("title").textContent = name;
-                    document.getElementById("banner").src = banner;
-                    document.title = name + " Menu";
-
-                    for (let i = 1; i <= Number(count); i++) {
-                        images.push(`images/${key}/menu/${i}.jpeg`);
-                    }
-
-                    document.getElementById("menu-image").src = images[0];
-                });
-
-            document.getElementById("prev").onclick = () => {
-                index = (index - 1 + images.length) % images.length;
-                update();
-            };
-
-            document.getElementById("next").onclick = () => {
-                index = (index + 1) % images.length;
-                update();
-            };
-
-            function update() {
-                document.getElementById("menu-image").src = images[index];
-            }
-        </script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h6>Want to add your menu?</h6>
+            <h6>Contact us:</h6>
+            <div class="social-links">
+                <a href="https://web.facebook.com/profile.php?id=61573092196314" target="_blank"><img src="images/contact_logo/facebook_logo.webp" alt="Facebook"></a>
+                <a href="https://www.instagram.com/roadha.online?igsh=MWp5MGFqcjFpdnA3Yg==" target="_blank"><img src="images/contact_logo/instagram_logo.png" alt="Instagram"></a>
+                <a id="phoneLink" onclick="copyPhoneNumber()" style="cursor:pointer;">
+                    <img src="images/contact_logo/phone_logo.png" alt="Phone">
+                </a>
+            </div>
+        </div>
+    </footer>
 
     </body>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "+9609333396";
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Phone number copied to clipboard: " + phoneNumber);
+                })
+                .catch(err => {
+                    console.error('Failed to copy phone number: ', err);
+                });
+        }
+
+
+        const params = new URLSearchParams(location.search);
+        const key = params.get("restaurant");
+        if (!key) location.href = "under_construction.html";
+
+        let images = [];
+        let index = 0;
+
+        fetch("restaurant_data.csv")
+            .then(res => res.text())
+            .then(text => {
+                const rows = text.trim().split("\n").slice(1);
+
+                const row = rows
+                    .map(r => r.split(","))
+                    .find(r => r[0] === key);
+
+                if (!row) throw "Restaurant not found";
+
+                const [, name, , banner, count] = row;
+
+                document.getElementById("title").textContent = name;
+                document.getElementById("banner").src = banner;
+                document.title = name + " Menu";
+
+                for (let i = 1; i <= Number(count); i++) {
+                    images.push(`images/${key}/menu/${i}.jpeg`);
+                }
+
+                document.getElementById("menu-image").src = images[0];
+            });
+
+        document.getElementById("prev").onclick = () => {
+            index = (index - 1 + images.length) % images.length;
+            update();
+        };
+
+        document.getElementById("next").onclick = () => {
+            index = (index + 1) % images.length;
+            update();
+        };
+
+        function update() {
+            document.getElementById("menu-image").src = images[index];
+        }
+    </script>
 </html>

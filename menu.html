@@ -27,9 +27,17 @@
         <h2 id="title" class="section-title"></h2>
 
         <div class="carousel-menu">
-            <button id="prev">◀</button>
-            <button id="next">▶</button>
+            <div class="carousel-controls">
+                <button id="prev">◀</button>
+                <button id="next">▶</button>
+            </div>
+
             <img id="menu-image">
+
+            <div class="carousel-controls">
+                <button id="prev-bottom">◀</button>
+                <button id="next-bottom">▶</button>
+            </div>
         </div>
 
         <div id="footer-banner">
@@ -94,15 +102,17 @@
                 document.getElementById("menu-image").src = images[0];
             });
 
-        document.getElementById("prev").onclick = () => {
-            index = (index - 1 + images.length) % images.length;
-            update();
-        };
+            document.getElementById("prev").onclick =
+            document.getElementById("prev-bottom").onclick = () => {
+                index = (index - 1 + images.length) % images.length;
+                update();
+            };
 
-        document.getElementById("next").onclick = () => {
-            index = (index + 1) % images.length;
-            update();
-        };
+            document.getElementById("next").onclick =
+            document.getElementById("next-bottom").onclick = () => {
+                index = (index + 1) % images.length;
+                update();
+            };
 
         function update() {
             document.getElementById("menu-image").src = images[index];

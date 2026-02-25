@@ -561,3 +561,33 @@ div.scroll-container img {
     display: block;
     margin: 0 auto;
 }
+
+/* ==== MENU CAROUSEL BUTTON CENTERING ==== */
+
+.carousel-menu {
+    width: 100%;
+    text-align: center;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 15px 0;
+}
+
+.carousel-controls button {
+    font-size: 26px;
+    background: linear-gradient(45deg, #ffe554, #e5aa00);
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.carousel-controls button:hover {
+    transform: scale(1.15);
+}

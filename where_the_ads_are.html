@@ -21,7 +21,7 @@
             <h1 style="display: none;">iftar menus in maldives</h1>
             <h1 style="display: none;">ramadan menus</h1>
             <h1 style="display: none;">roadha promotion</h1>
-            <h1 style="display: none;">roadha mas 2025</h1>
+            <h1 style="display: none;">roadha mas 2027</h1>
             <h1 style="display: none;">IFTAR MENU</h1>
             <h1 style="display: none;">IFTAR TABLE</h1>
             <h1 style="display: none;">MALDIVES</h1>
@@ -100,12 +100,11 @@
         <h2 class="section-title">Our Restaurants</h2>
         <div id="restaurant-grid" class="menu-grid">
             <!-- Dynamic content will be inserted here -->
-             <!-- banner add displayed in the middle (images/ads/banner_ad.png) -->
         </div>
     </div>
 
     <div id="footer-banner">
-        <a href="under_construction.html">
+        <a href="ad_prices.html">
             <img src="images/ads/footer_ad.png" alt="Footer Ad" style="width: 100%; height: auto; display: block;">
         </a>
     </div>
@@ -154,7 +153,7 @@
                     rows.forEach(row => {
                         const [key, name, logo] = row.split(",");
                         const a = document.createElement("a");
-                        a.href = `menu.html?restaurant=${encodeURIComponent(key)}`;
+                        a.href = `ads-menu.html?restaurant=${encodeURIComponent(key)}`;
                         a.className = "menu-item";
                         a.innerHTML = `
                             <img src="${logo}" alt="${name}">

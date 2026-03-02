@@ -95,11 +95,11 @@
 
             filtered.forEach(r => {
                 const a = document.createElement("a");
-                a.href = `menu.html?restaurant=${encodeURIComponent(r.key)}`;
+                a.href = `menu.html?restaurant=${encodeURIComponent(r.restaurant_key)}`;
                 a.className = "menu-item";
                 a.innerHTML = `
-                    <img src="${r.logo}" alt="${r.name}">
-                    <span>${r.name}</span>
+                    <img src="${r.logo_path}" alt="${r.restaurant_name}">
+                    <span>${r.restaurant_name}</span>
                 `;
                 grid.appendChild(a);
             });

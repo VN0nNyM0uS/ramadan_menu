@@ -95,6 +95,34 @@ body {
     transform: scale(1.2);
 }
 
+/* ===== Restaurant Filter ===== */
+.filter-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid #d3d3d3;
+    color: #d3d3d3;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: #ffe554;
+    color: #491137;
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #ffe554, #e5aa00);
+    color: #491137;
+    border: none;
+}
+
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column size */

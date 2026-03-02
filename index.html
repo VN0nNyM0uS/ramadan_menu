@@ -32,6 +32,14 @@
     
     <div>
         <h2 class="section-title">Our Restaurants</h2>
+
+        <!-- filter button -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="mle">Malé</button>
+            <button class="filter-btn" data-filter="hml">Hulhumalé</button>
+        </div>
+
         <div id="restaurant-grid" class="menu-grid">
             <!-- Dynamic content will be inserted here -->
         </div>
@@ -55,28 +63,60 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", loadRestaurants);
+        document.addEventListener("DOMContentLoaded", () => {
+            loadRestaurants();
+            setupFilters();
+        });
+
+        let restaurantData = [];
 
         function loadRestaurants() {
             fetch("restaurant_data.csv")
                 .then(res => res.text())
                 .then(text => {
                     const rows = text.trim().split("\n").slice(1);
-                    const grid = document.getElementById("restaurant-grid");
-                    grid.innerHTML = "";
 
-                    rows.forEach(row => {
-                        const [key, name, logo] = row.split(",");
-                        const a = document.createElement("a");
-                        a.href = `menu.html?restaurant=${encodeURIComponent(key)}`;
-                        a.className = "menu-item";
-                        a.innerHTML = `
-                            <img src="${logo}" alt="${name}">
-                            <span>${name}</span>
-                        `;
-                        grid.appendChild(a);
+                    restaurantData = rows.map(row => {
+                        const [restaurant_key,restaurant_name,logo_path,banner_path,menu_image_count,location] = row.split(",");
+                        return { restaurant_key,restaurant_name,logo_path,banner_path,menu_image_count,location };
                     });
+
+                    renderRestaurants("all");
                 });
+        }
+
+        function renderRestaurants(filter) {
+            const grid = document.getElementById("restaurant-grid");
+            grid.innerHTML = "";
+
+            const filtered = filter === "all"
+                ? restaurantData
+                : restaurantData.filter(r => r.location === filter);
+
+            filtered.forEach(r => {
+                const a = document.createElement("a");
+                a.href = `menu.html?restaurant=${encodeURIComponent(r.key)}`;
+                a.className = "menu-item";
+                a.innerHTML = `
+                    <img src="${r.logo}" alt="${r.name}">
+                    <span>${r.name}</span>
+                `;
+                grid.appendChild(a);
+            });
+        }
+
+        function setupFilters() {
+            const buttons = document.querySelectorAll(".filter-btn");
+
+            buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    buttons.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+
+                    const filter = btn.dataset.filter;
+                    renderRestaurants(filter);
+                });
+            });
         }
 
         function copyPhoneNumber() {

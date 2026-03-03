@@ -77,8 +77,23 @@
                     const rows = text.trim().split("\n").slice(1);
 
                     restaurantData = rows.map(row => {
-                        const [restaurant_key,restaurant_name,logo_path,banner_path,menu_image_count,location] = row.split(",");
-                        return { restaurant_key,restaurant_name,logo_path,banner_path,menu_image_count,location };
+                        const [
+                            restaurant_key,
+                            restaurant_name,
+                            logo_path,
+                            banner_path,
+                            menu_image_count,
+                            location
+                        ] = row.split(",").map(item => item.trim());
+
+                        return {
+                            restaurant_key,
+                            restaurant_name,
+                            logo_path,
+                            banner_path,
+                            menu_image_count,
+                            location
+                        };
                     });
 
                     renderRestaurants("all");
